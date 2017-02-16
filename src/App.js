@@ -6,14 +6,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as cardsActions from './actions/cards';
 
-// utils
-import config from './utils/config'
-import * as trello from './utils/trello'
-
 // styles
 import './styles/reset.css';
 import './styles/bootstrap.css';
 import './styles/app.css';
+
+// utils
+import config from './utils/config'
+import * as trello from './utils/trello'
 
 // componants
 
@@ -31,9 +31,9 @@ class App extends Component {
 
     render() {
         return (
-                <div className="App">
-                    <p>lets go</p>
-                </div>
+            <div className="app fluid-container">
+                <p>lets go</p>
+            </div>
         );
     }
 }
