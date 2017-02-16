@@ -4,20 +4,13 @@ import React, { Component } from 'react';
 // redux
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as cardsActions from './actions/cards';
+import * as cardsActions from '../actions/cards';
 
 // utils
-import config from './utils/config'
-import * as trello from './utils/trello'
+import config from '../utils/config'
+import * as trello from '../utils/trello'
 
-// styles
-import './styles/reset.css';
-import './styles/bootstrap.css';
-import './styles/app.css';
-
-// componants
-
-class App extends Component {
+class Cards extends Component {
 
     constructor(props){
         super(props);
@@ -29,12 +22,10 @@ class App extends Component {
         console.log(data);
     }
 
-    render() {
-        return (
-                <div className="App">
-                    <p>lets go</p>
-                </div>
-        );
+    render(){
+        return(
+            <p>Run fat boy, run</p>
+        )
     }
 }
 
@@ -50,4 +41,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Cards);
