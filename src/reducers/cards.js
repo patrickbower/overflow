@@ -1,6 +1,19 @@
 function cards(state = [], action) {
-    console.log('reducer fired');
-    return state;
+
+    switch(action.type) {
+
+        case 'ADD_CARD':
+
+        return [ ...state, {
+            profile: action.card.profile,
+            checklist: action.card.checklist
+        }];
+
+        return state;
+
+        default:
+            return state;
+    }
 }
 
 export default cards;

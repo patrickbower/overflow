@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // redux
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as cardsActions from './actions/cards';
+import * as cardActions from './actions/cards';
 
 // styles
 import './styles/reset.css';
@@ -22,16 +22,33 @@ class App extends Component {
     constructor(props){
         super(props);
 
-        trello.getCards(config.toDoListID, this.storeList.bind(this));
+        trello.getCards(config.toDoListID, this.buildCardData.bind(this));
     }
 
-    storeList(data) {
-        console.log(data);
+    buildCardData(cardData) {
+
+        cardData.map(cardDataItem => {
+
+            let card = {};
+
+            if (cardDataItem.idChecklists.length) {
+                card.profile = cardDataItem;
+
+                trello.getChecklist(cardDataItem.idChecklists[0]).then(checkListData => {
+                    card.checklist = checkListData;
+                    this.props.actions.addcard(card);
+                });
+            }
+
+        })
     }
 
     render() {
+
+        console.log('render', this.props.cards);
+
         return (
-            <div className="app fluid-container">
+            <div className="container-fluid vertical-center">
                 <p>lets go</p>
             </div>
         );
@@ -46,7 +63,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(cardsActions, dispatch)
+        actions: bindActionCreators(cardActions, dispatch)
     }
 }
 
