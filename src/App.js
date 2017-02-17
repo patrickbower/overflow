@@ -16,40 +16,36 @@ import config from './utils/config'
 import * as trello from './utils/trello'
 
 // componants
+import Cardlist from './componants/Cardlist'
 
 class App extends Component {
 
     constructor(props){
         super(props);
 
-        trello.getCards(config.toDoListID, this.buildCardData.bind(this));
+        trello.getCards(config.toDoListID, this.getCards.bind(this));
     }
 
-    buildCardData(cardData) {
-
+    getCards(cardData) {
         cardData.map(cardDataItem => {
-
-            let card = {};
-
-            if (cardDataItem.idChecklists.length) {
-                card.profile = cardDataItem;
-
-                trello.getChecklist(cardDataItem.idChecklists[0]).then(checkListData => {
-                    card.checklist = checkListData;
-                    this.props.actions.addcard(card);
-                });
-            }
-
+            return this.getChecklists(cardDataItem);
         })
     }
 
+    getChecklists(cardDataItem){
+        if (cardDataItem.idChecklists.length) {
+            trello.getChecklist(cardDataItem.idChecklists[0]).then(checkListData => {
+                let data = Object.assign(cardDataItem, { 'checklist': checkListData} );
+                this.props.actions.addcard(data);
+            });
+        }
+    }
+
     render() {
-
-        console.log('render', this.props.cards);
-
+        console.log(this.props);
         return (
             <div className="container-fluid vertical-center">
-                <p>lets go</p>
+                <Cardlist cards={this.props.cards} />
             </div>
         );
     }

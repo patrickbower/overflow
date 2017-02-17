@@ -1,6 +1,6 @@
-export function addcard(card){
+export function addcard(data){
     return {
-        type: 'ADD_CARD',
-        card
+        type: 'BUILD_CARDS',
+        data
     }
 }

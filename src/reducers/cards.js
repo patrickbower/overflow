@@ -1,16 +1,13 @@
-function cards(state = [], action) {
+function cards(state = {}, action) {
 
     switch(action.type) {
 
-        case 'ADD_CARD':
+        // new cards api call
+        case 'BUILD_CARDS':
 
-        return [ ...state, {
-            profile: action.card.profile,
-            checklist: action.card.checklist
-        }];
+        return { ...state, [action.data.id] : action.data }
 
-        return state;
-
+        // default
         default:
             return state;
     }

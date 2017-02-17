@@ -43,3 +43,8 @@ body {
 .icon-action--tick {
     background-position: 0 -37px;
 }*/
+
+.app__card {
+    background: var(--grey-5);
+    color: var(--grey-2);
+}
