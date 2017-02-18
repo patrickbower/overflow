@@ -1,16 +1,20 @@
-function cards(state = [], action) {
+function cards(state = {}, action) {
 
     switch(action.type) {
 
-        case 'ADD_CARD':
+        // new cards api call
+        case 'CARDS_BUILD':
+            return { ...state, [action.data.id] : action.data }
 
-        return [ ...state, {
-            profile: action.card.profile,
-            checklist: action.card.checklist
-        }];
+        // checklist item status
+        case 'CARDS_CHECK_ITEM':
+            return Object.assign(state, {
+                checklist: Object.assign(state[action.id].checklist[action.index], {
+                    state: action.newState
+                })
+            });
 
-        return state;
-
+        // default
         default:
             return state;
     }
