@@ -25,12 +25,12 @@ class Cardlist extends Component {
             <li key={data.id}>
                 <div className="form-check mb-0">
                     <label className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input"
+                        <input type="checkbox" className="custom-control-input app__custom-control-input"
                             defaultChecked={ data.state === 'complete' ? true : false }
                             onClick={ this.handleCheckbox.bind(this, data, index, id) }
                         />
-                        <span className="custom-control-indicator" />
-                        <span className="custom-control-description">{data.name}</span>
+                        <span className="custom-control-indicator app__custom-control-indicator" />
+                        <span className="custom-control-description app__custom-control-description">{data.name}</span>
                       </label>
                 </div>
             </li>

@@ -15,36 +15,46 @@ body {
 }
 
 .vertical-center {
-    min-height: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    max-width: 768px;
+    max-width: 576px;
 }
 
-/*.icon-action {
+.icon-card-control {
     display: block;
     text-indent: -9999px;
-    width: 35px;
-    height: 28px;
-    background: url('icons/marks.svg');
+    width: 20px;
+    height: 20px;
+    background: url('icons/sprite.svg');
     background-repeat: no-repeat;
-    background-size: 100px 100px;
+    background-size: 60px 60px;
 }
 
-.icon-action--plus {
-    background-position: -70px -37px;
+.icon-card-control--cross {
+    background-position: -22px -20px;
 }
 
-.icon-action--cross {
-    background-position: -36px -37px;
+.icon-card-control--plus {
+    background-position: -42px -20px;
 }
 
-.icon-action--tick {
-    background-position: 0 -37px;
-}*/
+.icon-card-control--tick {
+    background-position: 0 -20px;
+}
 
 .app__card {
     background: var(--grey-5);
     color: var(--grey-2);
+    width: 100%;
+}
+
+
+.app__custom-control-input:checked ~ .app__custom-control-indicator {
+  background-color: var(--grey-2)!important;
+}
+
+.custom-control-input:focus ~ .custom-control-indicator {
+    box-shadow: none !important;
+}
+
+.app__custom-control-input:checked ~ .app__custom-control-description {
+    color: var(--grey-4);
 }
