@@ -26,6 +26,10 @@ body {
     max-width: 576px;
 }
 
+.full-width {
+    width: 100%;
+}
+
 /*
  * Cards
  */
