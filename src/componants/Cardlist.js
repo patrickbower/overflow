@@ -29,7 +29,7 @@ class Cardlist extends Component {
                             defaultChecked={ data.state === 'complete' ? true : false }
                             onClick={ this.handleCheckbox.bind(this, data, index, id) }
                         />
-                        <span className="custom-control-indicator" />
+                        <span className="custom-control-indicator app__custom-control-indicator" />
                         <span className="custom-control-description app__custom-control-description">{data.name}</span>
                       </label>
                 </div>
