@@ -54,23 +54,23 @@ class App extends Component {
 
     render() {
         return (
-                <div className="container-fluid vertical-center mb-5 mt-5">
-                    <div className="row">
-                        <div className="col col-12">
-                            <CardFilter />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col col-12">
-                            <Cardlist cards={this.props.cards} />
-                        </div>
-                    </div>
-                    <div className="row justify-content-center">
-                        <div className="col col-12">
-                            <CardControls />
-                        </div>
+            <div className="container-fluid vertical-center mb-5 mt-5">
+                <div className="row">
+                    <div className="col col-12">
+                        <CardFilter />
                     </div>
                 </div>
+                <div className="row">
+                    <div className="col col-12">
+                        <Cardlist cards={this.props.cards} />
+                    </div>
+                </div>
+                <div className="row justify-content-center">
+                    <div className="col col-12">
+                        <CardControls />
+                    </div>
+                </div>
+            </div>
         );
     }
 }

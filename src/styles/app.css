@@ -1,3 +1,7 @@
+/*
+ * Global
+ */
+
 :root {
     --grey-1: #404040;
     --grey-2: #595959;
@@ -14,9 +18,39 @@ body {
     color: var(--grey-8);
 }
 
+/*
+ * Layout
+ */
+
 .vertical-center {
     max-width: 576px;
 }
+
+/*
+ * Cards
+ */
+
+.app__card {
+    background: var(--grey-5);
+    color: var(--grey-2);
+    width: 100%;
+}
+
+.app__custom-control-input:checked ~ .app__custom-control-indicator {
+  background-color: var(--grey-2)!important;
+}
+
+.app_custom-control-input:focus ~ .app_custom-control-indicator {
+    box-shadow: none !important;
+}
+
+.app__custom-control-input:checked ~ .app__custom-control-description {
+    color: var(--grey-4);
+}
+
+/*
+ * Card Controls
+ */
 
 .icon-card-control {
     display: block;
@@ -38,23 +72,4 @@ body {
 
 .icon-card-control--tick {
     background-position: 0 -20px;
-}
-
-.app__card {
-    background: var(--grey-5);
-    color: var(--grey-2);
-    width: 100%;
-}
-
-
-.app__custom-control-input:checked ~ .app__custom-control-indicator {
-  background-color: var(--grey-2)!important;
-}
-
-.custom-control-input:focus ~ .custom-control-indicator {
-    box-shadow: none !important;
-}
-
-.app__custom-control-input:checked ~ .app__custom-control-description {
-    color: var(--grey-4);
 }
