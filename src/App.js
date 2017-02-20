@@ -17,7 +17,8 @@ import * as trello from './utils/trello';
 
 // componants
 import Cardlist from './componants/Cardlist';
-import CardControls from './componants/CardControls'
+import CardControls from './componants/CardControls';
+import CardFilter from './componants/CardFilter';
 
 class App extends Component {
 
@@ -54,6 +55,11 @@ class App extends Component {
     render() {
         return (
                 <div className="container-fluid vertical-center mb-5 mt-5">
+                    <div className="row">
+                        <div className="col col-12">
+                            <CardFilter />
+                        </div>
+                    </div>
                     <div className="row">
                         <div className="col col-12">
                             <Cardlist cards={this.props.cards} />

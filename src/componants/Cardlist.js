@@ -22,7 +22,7 @@ class Cardlist extends Component {
 
     checkitem(data, index, id){
         return (
-            <li key={data.id}>
+            <div key={data.id}>
                 <div className="form-check mb-0">
                     <label className="custom-control custom-checkbox">
                         <input type="checkbox" className="custom-control-input app__custom-control-input"
@@ -33,7 +33,7 @@ class Cardlist extends Component {
                         <span className="custom-control-description app__custom-control-description">{data.name}</span>
                       </label>
                 </div>
-            </li>
+            </div>
         )
     }
 
@@ -43,10 +43,12 @@ class Cardlist extends Component {
             // make card with each checklist arr
             return (
                 <li key={id} className="app__card p-3 mb-3">
-                    <h2 className="h5 mb-3">{ data[id].name }</h2>
-                    <ul>
-                        { data[id].checklist.map((data, index) => this.checkitem(data, index, id)) }
-                    </ul>
+                    <form>
+                        <fieldset>
+                            <legend className="h5 mb-3">{ data[id].name }</legend>
+                            { data[id].checklist.map((data, index) => this.checkitem(data, index, id)) }
+                        </fieldset>
+                    </form>
                 </li>
             )
         });
