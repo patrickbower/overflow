@@ -47,4 +47,11 @@ body {
 .app__card {
     background: var(--grey-5);
     color: var(--grey-2);
+    width: 100%;
+}
+
+
+.app__custom-control-input:checked ~ .app__custom-control-description {
+    color: var(--grey-4);
+    /*text-decoration: line-through;*/
 }
