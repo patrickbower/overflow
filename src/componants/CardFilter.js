@@ -6,19 +6,22 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as cardActions from '../actions/cards';
 
-// utils
-import * as trello from '../utils/trello';
-
 class CardFilter extends Component {
+
+    cardOptions(data){
+        return Object.keys(data).map(id => {
+            return (
+                <option value={ data[id].name }>{ data[id].name }</option>
+            )
+        });
+    }
 
     render(){
         return(
             <div className="mt-2 mr-2">
                 <select className="custom-select">
                     <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    { this.cardOptions(this.props.cards) }
                 </select>
             </div>
         )

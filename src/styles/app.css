@@ -44,7 +44,7 @@ body {
   background-color: var(--grey-2)!important;
 }
 
-.app_custom-control-input:focus ~ .app_custom-control-indicator {
+.app__custom-control-input:focus ~ .app__custom-control-indicator {
     box-shadow: none !important;
 }
 
