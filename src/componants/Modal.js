@@ -25,32 +25,75 @@ class Modal extends Component {
         if (this.props.modal.open) {
             return(
                 <div>
-                    <div className="modal fade show" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style={{display: 'block'}}>
-                        <div className="modal-dialog" role="document">
+                    <div className="modal d-block">
+                        <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={this.closeModal.bind(this)}>
+                                    <h5 className="text-muted">Settings</h5>
+                                    <button type="button" className="close" onClick={this.closeModal.bind(this)}>
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div className="modal-body">
-                                    ...
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-primary">Save changes</button>
+
+                                    <form>
+                                        <div className="form-group">
+                                            <div className="row">
+                                                <div className="col-9">
+                                                    <input type="text" className="form-control" placeholder="Add a new card" />
+                                                </div>
+                                                <div className="col-3">
+                                                    <button type="submit" className="btn btn-secondary w-100">Add</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <form>
+                                        <div className="form-group">
+                                            <div className="row">
+                                                <div className="col-9">
+                                                <select className="custom-select w-100">
+                                                    <option defaultValue>Remove a card</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                                </div>
+                                                <div className="col-3">
+                                                    <button type="submit" className="btn btn-secondary w-100">Remove</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <form>
+                                        <div className="form-group">
+                                            <div className="row">
+                                                <div className="col-9">
+                                                <select className="custom-select w-100">
+                                                    <option defaultValue>Current card</option>
+                                                    <option value="1">One</option>
+                                                    <option value="2">Two</option>
+                                                    <option value="3">Three</option>
+                                                </select>
+                                                </div>
+                                                <div className="col-3">
+                                                    <button type="submit" className="btn btn-secondary w-100">Confirm</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="modal-backdrop fade show"></div>
+                    <div className="modal-backdrop show" onClick={this.closeModal.bind(this)}></div>
                 </div>
             )
         } else {
-            return (
-                <p>no</p>
-            )
+            return false
         }
 
 
