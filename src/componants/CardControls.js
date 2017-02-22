@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import * as cardActions from '../actions/cards';
 
 // utils
-import * as trello from '../utils/trello';
+// import * as trello from '../utils/trello';
 
 class CardControls extends Component {
 
