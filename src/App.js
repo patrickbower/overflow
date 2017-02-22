@@ -19,8 +19,7 @@ import * as trello from './utils/trello';
 import Cardlist from './componants/Cardlist';
 import CardControls from './componants/CardControls';
 import Header from './componants/Header';
-
-// import Modal from './componants/Modal';
+import Modal from './componants/Modal';
 
 class App extends Component {
 
@@ -58,7 +57,7 @@ class App extends Component {
         return (
             <div>
                 <Header />
-                {/* <Modal /> */}
+                <Modal />
                 <div className="container-fluid vertical-center mb-5 mt-5">
                     <div className="row">
                         <div className="col col-12">
