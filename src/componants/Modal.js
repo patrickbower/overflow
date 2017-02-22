@@ -25,6 +25,7 @@ class Modal extends Component {
         if (this.props.modal.open) {
             return(
                 <div>
+                <div className="modal-backdrop show" onClick={this.closeModal.bind(this)}></div>
                     <div className="modal d-block">
                         <div className="modal-dialog">
                             <div className="modal-content">
@@ -43,7 +44,7 @@ class Modal extends Component {
                                                     <input type="text" className="form-control" placeholder="Add a new card" />
                                                 </div>
                                                 <div className="col-3">
-                                                    <button type="submit" className="btn btn-secondary w-100">Add</button>
+                                                    <button type="submit" className="btn btn-primary w-100">Add</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -61,7 +62,7 @@ class Modal extends Component {
                                                 </select>
                                                 </div>
                                                 <div className="col-3">
-                                                    <button type="submit" className="btn btn-secondary w-100">Remove</button>
+                                                    <button type="submit" className="btn btn-danger w-100">Remove</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -79,7 +80,7 @@ class Modal extends Component {
                                                 </select>
                                                 </div>
                                                 <div className="col-3">
-                                                    <button type="submit" className="btn btn-secondary w-100">Confirm</button>
+                                                    <button type="submit" className="btn btn-success w-100">Confirm</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -89,7 +90,6 @@ class Modal extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="modal-backdrop show" onClick={this.closeModal.bind(this)}></div>
                 </div>
             )
         } else {
