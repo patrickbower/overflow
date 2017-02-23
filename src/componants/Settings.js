@@ -19,6 +19,12 @@ class Settings extends Component {
         Trello.makecard(title, this.closeModal.bind(this));
     }
 
+    handleCurrentSubmit(event) {
+        event.preventDefault();
+        let cardSelect = this.refs.cardSelect.value;
+        console.log(cardSelect);
+    }
+
     closeModal() {
         this.props.actions.modalToggle('close');
     }
@@ -32,10 +38,10 @@ class Settings extends Component {
                 <form onSubmit={this.handleAddSubmit.bind(this)}>
                     <div className="form-group">
                         <div className="row">
-                            <div className="col-9">
-                                <input type="text" className="form-control" placeholder="Add a new card" ref="title"/>
+                            <div className="col-md-9">
+                                <input type="text" className="form-control mb-2" placeholder="Add a new card" ref="title"/>
                             </div>
-                            <div className="col-3">
+                            <div className="col-md-3">
                                 <button type="submit" className="btn btn-primary w-100">Add</button>
                             </div>
                         </div>
@@ -45,33 +51,33 @@ class Settings extends Component {
                 <form>
                     <div className="form-group">
                         <div className="row">
-                            <div className="col-9">
-                            <select className="custom-select w-100">
-                                <option defaultValue>Remove a card</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                            <div className="col-md-9">
+                                <select className="custom-select w-100 mb-2">
+                                    <option defaultValue>Remove a card</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
                             </div>
-                            <div className="col-3">
+                            <div className="col-md-3">
                                 <button type="submit" className="btn btn-danger w-100">Remove</button>
                             </div>
                         </div>
                     </div>
                 </form>
 
-                <form>
+                <form onSubmit={this.handleCurrentSubmit.bind(this)}>
                     <div className="form-group">
                         <div className="row">
-                            <div className="col-9">
-                            <select className="custom-select w-100">
-                                <option defaultValue>Current card</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                            <div className="col-md-9">
+                                <select className="custom-select w-100 mb-2" ref="cardSelect">
+                                    <option defaultValue>Current card</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
                             </div>
-                            <div className="col-3">
+                            <div className="col-md-3">
                                 <button type="submit" className="btn btn-success w-100">Confirm</button>
                             </div>
                         </div>
@@ -91,8 +97,9 @@ function mapStateToProps(state, props) {
 }
 
 function mapDispatchToProps(dispatch) {
+    const combineActions = Object.assign({}, cardActions, modalActions);
     return {
-        actions: bindActionCreators(cardActions, modalActions, dispatch)
+        actions: bindActionCreators(combineActions, dispatch)
     }
 }
 
