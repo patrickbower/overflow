@@ -48,7 +48,7 @@ class App extends Component {
                 // add checklist to card obj
                 let data = Object.assign(cardDataItem, { 'checklist': checkListData} );
                 // add to store
-                this.props.actions.addcard(data);
+                this.props.actions.makecards(data);
             });
         }
     }

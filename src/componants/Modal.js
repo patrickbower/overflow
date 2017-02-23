@@ -6,6 +6,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as modalActions from '../actions/modal';
 
+// components
+import Settings from './Settings';
+
 class Modal extends Component {
 
 
@@ -31,61 +34,10 @@ class Modal extends Component {
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <h5 className="text-muted">Settings</h5>
-                                    <button type="button" className="close" onClick={this.closeModal.bind(this)}>
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    <button type="button" className="close" onClick={this.closeModal.bind(this)}><span>&times;</span></button>
                                 </div>
                                 <div className="modal-body">
-
-                                    <form>
-                                        <div className="form-group">
-                                            <div className="row">
-                                                <div className="col-9">
-                                                    <input type="text" className="form-control" placeholder="Add a new card" />
-                                                </div>
-                                                <div className="col-3">
-                                                    <button type="submit" className="btn btn-primary w-100">Add</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                    <form>
-                                        <div className="form-group">
-                                            <div className="row">
-                                                <div className="col-9">
-                                                <select className="custom-select w-100">
-                                                    <option defaultValue>Remove a card</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select>
-                                                </div>
-                                                <div className="col-3">
-                                                    <button type="submit" className="btn btn-danger w-100">Remove</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                    <form>
-                                        <div className="form-group">
-                                            <div className="row">
-                                                <div className="col-9">
-                                                <select className="custom-select w-100">
-                                                    <option defaultValue>Current card</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
-                                                </select>
-                                                </div>
-                                                <div className="col-3">
-                                                    <button type="submit" className="btn btn-success w-100">Confirm</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-
+                                    <Settings />
                                 </div>
                             </div>
                         </div>
@@ -95,8 +47,6 @@ class Modal extends Component {
         } else {
             return false
         }
-
-
     }
 }
 

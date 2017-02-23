@@ -39,7 +39,7 @@ export function removeCard(cardId, callback) {
     place(request, callback);
 }
 
-export function addCard(cardName, callback) {
+export function makecard(cardName, callback) {
     const request = `${config.url}/1/lists/${config.toDoListID}/cards?name=${cardName}&key=${config.key}&token=${config.token}`;
     send(request, callback);
 }

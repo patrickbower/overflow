@@ -1,4 +1,4 @@
-export function addcard(data){
+export function makecards(data){
     return {
         type: 'CARDS_BUILD',
         data
@@ -12,5 +12,12 @@ export function checkItem(data, index, id, newState){
         index,
         id,
         newState
+    }
+}
+
+export function addCard(title){
+    return {
+        type: 'ADD_CARD',
+        title
     }
 }

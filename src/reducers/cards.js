@@ -14,6 +14,12 @@ function cards(state = {}, action) {
                 })
             });
 
+        case 'ADD_CARD':
+
+            console.log('add cards', action.title);
+
+            return state;
+
         // default
         default:
             return state;
