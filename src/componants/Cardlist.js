@@ -8,13 +8,6 @@ import * as cardActions from '../actions/cards';
 
 class Cardlist extends Component {
 
-    // handleCheckbox(data, index, id){
-    //     let newState = data.state === 'complete' ? 'incomplete' : 'complete';
-    //     this.props.actions.checkItem(data, index, id, newState)
-    //     trello.checkItem(id, data.idChecklist, data.id, newState);
-    // }
-
-
     checkitem(listData, index, key){
         return (
             <div key={listData.id}>
