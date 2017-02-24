@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as cardActions from '../actions/cards';
+import * as settingsActions from '../actions/settings';
 
 class Cardlist extends Component {
 
@@ -40,10 +41,25 @@ class Cardlist extends Component {
         });
     }
 
+    viewType = () => {
+        let singleCardKey = this.props.settings.singleCardView;
+
+        if (singleCardKey) {
+            return ({
+                [singleCardKey]: this.props.cards[singleCardKey]
+            })
+        } else {
+            return this.props.cards
+        }
+    }
+
     render(){
+
+        let data = this.viewType();
+
         return(
             <ul>
-                { this.cards(this.props.cards) }
+                { this.cards(data) }
             </ul>
         )
     }
@@ -51,13 +67,15 @@ class Cardlist extends Component {
 
 function mapStateToProps(state, props) {
     return {
-        cards: state.cards
+        cards: state.cards,
+        settings: state.settings
     };
 }
 
 function mapDispatchToProps(dispatch) {
+    const combineActions = Object.assign({}, cardActions, settingsActions);
     return {
-        actions: bindActionCreators(cardActions, dispatch)
+        actions: bindActionCreators(combineActions, dispatch)
     }
 }
 

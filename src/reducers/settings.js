@@ -4,8 +4,13 @@ function settings(state = {}, action) {
 
         // toggle
         case 'MODAL_TOGGLE':
-            let newState = action.toggle === 'open' ? true : false;
-            return {...state, open: newState}
+
+            return { ...state, open: action.toggle === 'open' ? true : false }
+
+        // single card view
+        case 'SINGLE_CARD_VIEW':
+
+            return { ...state, singleCardView: action.id }
 
         // default
         default:

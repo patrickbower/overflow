@@ -35,18 +35,7 @@ function cards(state = {}, action) {
             return cloneState;
 
         case 'ADD_CARD':
-
             console.log('add cards', action.title);
-
-            return state;
-
-
-        case 'SINGLE_CARD_VIEW':
-
-            console.log('SINGLE_CARD_VIEW', action.id);
-
-            // add new objet to state - if no object exsists then display all
-
             return state;
 
         // default

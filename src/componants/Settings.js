@@ -22,7 +22,8 @@ class Settings extends Component {
     currentCardSubmit = (event) => {
         event.preventDefault();
         let id = this.refs.cardSelect.value;
-        this.props.actions.singleCardView(id)
+        this.props.actions.singleCardView(id);
+        this.closeModal();
     }
 
     closeModal = () => {
