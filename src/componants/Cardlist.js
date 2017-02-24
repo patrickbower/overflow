@@ -6,29 +6,23 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as cardActions from '../actions/cards';
 
-// utils
-import * as trello from '../utils/trello';
-
 class Cardlist extends Component {
 
-    handleCheckbox(data, index, id){
-        let newState = data.state === 'complete' ? 'incomplete' : 'complete';
-        this.props.actions.checkItem(data, index, id, newState)
-        trello.checkItem(id, data.idChecklist, data.id, newState);
-    }
+    // handleCheckbox(data, index, id){
+    //     let newState = data.state === 'complete' ? 'incomplete' : 'complete';
+    //     this.props.actions.checkItem(data, index, id, newState)
+    //     trello.checkItem(id, data.idChecklist, data.id, newState);
+    // }
 
-    checkItem = (id) => {
-        console.log(id);
-    }
 
-    checkitem(listData){
+    checkitem(listData, index, key){
         return (
             <div key={listData.id}>
                 <div className="form-check mb-0">
                     <label className="custom-control custom-checkbox">
                         <input type="checkbox" className="custom-control-input app__custom-control-input"
                             checked={ listData.state === 'complete' ? true : false }
-                            onChange={ () => this.checkItem(listData) }
+                            onChange={ () => this.props.actions.checkItem(index, key) }
                         />
                         <span className="custom-control-indicator app__custom-control-indicator" />
                         <span className="custom-control-description app__custom-control-description">{listData.name}</span>
@@ -40,13 +34,12 @@ class Cardlist extends Component {
 
     cards(cardsData){
         return Object.keys(cardsData).map(key => {
-            console.log(key);
             return (
                 <li key={key} className="app__card p-3 mb-3">
                     <form>
                         <fieldset>
                             <legend className="h5 mb-3">{ cardsData[key].name }</legend>
-                            { cardsData[key].checklist.map(listData => this.checkitem(listData)) }
+                            { cardsData[key].checklist.map((listData, index) => this.checkitem(listData, index, key)) }
                         </fieldset>
                     </form>
                 </li>

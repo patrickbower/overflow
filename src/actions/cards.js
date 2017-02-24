@@ -5,13 +5,10 @@ export function makecards(data){
     }
 }
 
-export function checkItem(data, index, id, newState){
+export function checkItem(index, key){
     return {
         type: 'CARDS_CHECK_ITEM',
-        data,
-        index,
-        id,
-        newState
+        index, key
     }
 }
 

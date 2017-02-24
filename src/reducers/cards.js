@@ -1,3 +1,6 @@
+// utils
+import * as Trello from '../utils/trello';
+
 function cards(state = {}, action) {
 
     switch(action.type) {
@@ -8,11 +11,28 @@ function cards(state = {}, action) {
 
         // checklist item status
         case 'CARDS_CHECK_ITEM':
-            return Object.assign(state, {
-                checklist: Object.assign(state[action.id].checklist[action.index], {
-                    state: action.newState
-                })
-            });
+
+            // copy object
+            let cloneState = JSON.parse(JSON.stringify(state));
+
+            // get check object
+            let ChecklistObj = cloneState[action.key].checklist[action.index];
+
+            // create new state
+            let newState = ChecklistObj.state === 'complete' ? 'incomplete' : 'complete';
+
+            // set new state in cloned object
+            cloneState[action.key].checklist[action.index].state = newState;
+
+            // ping trello api
+            Trello.checkItem(
+                action.key,
+                ChecklistObj.idChecklist,
+                ChecklistObj.id,
+                newState
+            );
+
+            return cloneState;
 
         case 'ADD_CARD':
 
