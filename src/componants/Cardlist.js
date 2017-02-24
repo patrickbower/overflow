@@ -12,41 +12,41 @@ import * as trello from '../utils/trello';
 class Cardlist extends Component {
 
     handleCheckbox(data, index, id){
-        // create new state
         let newState = data.state === 'complete' ? 'incomplete' : 'complete';
-        // set state
         this.props.actions.checkItem(data, index, id, newState)
-        // set trello
         trello.checkItem(id, data.idChecklist, data.id, newState);
     }
 
-    checkitem(data, index, id){
+    checkItem(id) => () {
+        console.log(id);
+    }
+
+    checkitem(listData){
         return (
-            <div key={data.id}>
+            <div key={listData.id}>
                 <div className="form-check mb-0">
                     <label className="custom-control custom-checkbox">
                         <input type="checkbox" className="custom-control-input app__custom-control-input"
-                            defaultChecked={ data.state === 'complete' ? true : false }
-                            onClick={ this.handleCheckbox.bind(this, data, index, id) }
+                            checked={ listData.state === 'complete' ? true : false }
+                            onChange={ () => this.checkItem(listData) }
                         />
                         <span className="custom-control-indicator app__custom-control-indicator" />
-                        <span className="custom-control-description app__custom-control-description">{data.name}</span>
+                        <span className="custom-control-description app__custom-control-description">{listData.name}</span>
                       </label>
                 </div>
             </div>
         )
     }
 
-    cards(data){
-        // each card obj
-        return Object.keys(data).map(id => {
-            // make card with each checklist arr
+    cards(cardsData){
+        return Object.keys(cardsData).map(key => {
+            console.log(key);
             return (
-                <li key={id} className="app__card p-3 mb-3">
+                <li key={key} className="app__card p-3 mb-3">
                     <form>
                         <fieldset>
-                            <legend className="h5 mb-3">{ data[id].name }</legend>
-                            { data[id].checklist.map((data, index) => this.checkitem(data, index, id)) }
+                            <legend className="h5 mb-3">{ cardsData[key].name }</legend>
+                            { cardsData[key].checklist.map(listData => this.checkitem(listData)) }
                         </fieldset>
                     </form>
                 </li>
