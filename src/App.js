@@ -41,6 +41,7 @@ class App extends Component {
 
     // fetch checklists
     getChecklists(cardDataItem){
+
         // ensure checklist
         if (cardDataItem.idChecklists.length) {
             // get list
@@ -50,6 +51,8 @@ class App extends Component {
                 // add to store
                 this.props.actions.makecards(data);
             });
+        } else {
+            console.log(cardDataItem.name);
         }
     }
 
