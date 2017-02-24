@@ -8,38 +8,43 @@ import * as cardActions from '../actions/cards';
 import * as modalActions from '../actions/modal';
 
 // utils
-import * as Trello from '../utils/trello';
+// import * as Trello from '../utils/trello';
 
 class Settings extends Component {
 
-    handleAddSubmit(event) {
+    // handleAddSubmit(event) {
+    //     event.preventDefault();
+    //     let title = this.refs.title.value;
+    //     this.props.actions.addCard(title);
+    //     Trello.makecard(title, this.closeModal.bind(this));
+    // }
+
+    currentCardSubmit = (event) => {
         event.preventDefault();
-        let title = this.refs.title.value;
-        this.props.actions.addCard(title);
-        Trello.makecard(title, this.closeModal.bind(this));
+        let id = this.refs.cardSelect.value;
+        this.props.actions.singleCardView(id)
     }
 
-    handleCurrentSubmit(event) {
-        event.preventDefault();
-        let cardSelect = this.refs.cardSelect.value;
-        console.log(cardSelect);
-    }
-
-    closeModal() {
+    closeModal = () => {
         this.props.actions.modalToggle('close');
     }
 
+    selectInputOptions = (cards) => {
+        return Object.keys(cards).map(key => {
+            return (
+                <option key={key} value={key}> {cards[key].name} </option>
+            )
+        });
+    }
+
     render(){
-
-        console.log(this.props);
-
         return (
             <div>
-                <form onSubmit={this.handleAddSubmit.bind(this)}>
+                <form>
                     <div className="form-group">
                         <div className="row">
                             <div className="col-md-9">
-                                <input type="text" className="form-control mb-2" placeholder="Add a new card" ref="title"/>
+                                <input type="text" className="form-control mb-2" placeholder="Add a new card" />
                             </div>
                             <div className="col-md-3">
                                 <button type="submit" className="btn btn-primary w-100">Add</button>
@@ -66,15 +71,13 @@ class Settings extends Component {
                     </div>
                 </form>
 
-                <form onSubmit={this.handleCurrentSubmit.bind(this)}>
+                <form onSubmit={ this.currentCardSubmit }>
                     <div className="form-group">
                         <div className="row">
                             <div className="col-md-9">
                                 <select className="custom-select w-100 mb-2" ref="cardSelect">
                                     <option defaultValue>Current card</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    { this.selectInputOptions(this.props.cards) }
                                 </select>
                             </div>
                             <div className="col-md-3">

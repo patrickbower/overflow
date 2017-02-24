@@ -40,6 +40,15 @@ function cards(state = {}, action) {
 
             return state;
 
+
+        case 'SINGLE_CARD_VIEW':
+
+            console.log('SINGLE_CARD_VIEW', action.id);
+
+            // add new objet to state - if no object exsists then display all
+
+            return state;
+
         // default
         default:
             return state;

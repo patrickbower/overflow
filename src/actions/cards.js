@@ -18,3 +18,10 @@ export function addCard(title){
         title
     }
 }
+
+export function singleCardView(id){
+    return {
+        type: 'SINGLE_CARD_VIEW',
+        id
+    }
+}
