@@ -1,4 +1,4 @@
-function modal(state = {}, action) {
+function settings(state = {}, action) {
 
     switch(action.type) {
 
@@ -13,4 +13,4 @@ function modal(state = {}, action) {
     }
 }
 
-export default modal;
+export default settings;

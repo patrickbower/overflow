@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // redux
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as modalActions from '../actions/modal';
+import * as settingsActions from '../actions/settings';
 
 class Header extends Component {
 
@@ -24,13 +24,13 @@ class Header extends Component {
 
 function mapStateToProps(state, props) {
     return {
-        modal: state.modal
+        settings: state.settings
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(modalActions, dispatch)
+        actions: bindActionCreators(settingsActions, dispatch)
     }
 }
 

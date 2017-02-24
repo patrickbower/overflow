@@ -1,9 +1,9 @@
 import cards from './cards';
-import modal from './modal';
+import settings from './settings';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-    cards, modal
+    cards, settings
 });
 
 export default rootReducer;

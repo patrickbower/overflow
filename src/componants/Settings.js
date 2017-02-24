@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as cardActions from '../actions/cards';
-import * as modalActions from '../actions/modal';
+import * as settingsActions from '../actions/settings';
 
 // utils
 // import * as Trello from '../utils/trello';
@@ -32,7 +32,7 @@ class Settings extends Component {
     selectInputOptions = (cards) => {
         return Object.keys(cards).map(key => {
             return (
-                <option key={key} value={key}> {cards[key].name} </option>
+                <option key={key} value={key}>{ cards[key].name }</option>
             )
         });
     }
@@ -95,12 +95,12 @@ class Settings extends Component {
 function mapStateToProps(state, props) {
     return {
         cards: state.cards,
-        modal: state.modal
+        settings: state.settings
     };
 }
 
 function mapDispatchToProps(dispatch) {
-    const combineActions = Object.assign({}, cardActions, modalActions);
+    const combineActions = Object.assign({}, cardActions, settingsActions);
     return {
         actions: bindActionCreators(combineActions, dispatch)
     }

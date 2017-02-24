@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // redux
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as modalActions from '../actions/modal';
+import * as settingsActions from '../actions/settings';
 
 // components
 import Settings from './Settings';
@@ -25,7 +25,7 @@ class Modal extends Component {
 
     render(){
 
-        if (this.props.modal.open) {
+        if (this.props.settings.open) {
             return(
                 <div>
                 <div className="modal-backdrop show" onClick={this.closeModal.bind(this)}></div>
@@ -52,13 +52,13 @@ class Modal extends Component {
 
 function mapStateToProps(state, props) {
     return {
-        modal: state.modal
+        settings: state.settings
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(modalActions, dispatch)
+        actions: bindActionCreators(settingsActions, dispatch)
     }
 }
 
