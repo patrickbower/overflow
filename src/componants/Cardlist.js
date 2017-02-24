@@ -17,7 +17,7 @@ class Cardlist extends Component {
         trello.checkItem(id, data.idChecklist, data.id, newState);
     }
 
-    checkItem(id) => () {
+    checkItem = (id) => {
         console.log(id);
     }
 
