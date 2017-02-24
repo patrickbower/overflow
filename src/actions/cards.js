@@ -1,16 +1,20 @@
-export function addcard(data){
+export function makecards(data){
     return {
         type: 'CARDS_BUILD',
         data
     }
 }
 
-export function checkItem(data, index, id, newState){
+export function checkItem(index, key){
     return {
         type: 'CARDS_CHECK_ITEM',
-        data,
-        index,
-        id,
-        newState
+        index, key
+    }
+}
+
+export function addCard(title){
+    return {
+        type: 'ADD_CARD',
+        title
     }
 }

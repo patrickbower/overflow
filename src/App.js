@@ -17,7 +17,9 @@ import * as trello from './utils/trello';
 
 // componants
 import Cardlist from './componants/Cardlist';
-import CardControls from './componants/CardControls'
+import CardControls from './componants/CardControls';
+import Header from './componants/Header';
+import Modal from './componants/Modal';
 
 class App extends Component {
 
@@ -46,13 +48,16 @@ class App extends Component {
                 // add checklist to card obj
                 let data = Object.assign(cardDataItem, { 'checklist': checkListData} );
                 // add to store
-                this.props.actions.addcard(data);
+                this.props.actions.makecards(data);
             });
         }
     }
 
     render() {
         return (
+            <div>
+                <Header />
+                <Modal />
                 <div className="container-fluid vertical-center mb-5 mt-5">
                     <div className="row">
                         <div className="col col-12">
@@ -65,6 +70,7 @@ class App extends Component {
                         </div>
                     </div>
                 </div>
+            </div>
         );
     }
 }

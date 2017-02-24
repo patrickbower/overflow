@@ -1,7 +1,11 @@
 import { createStore } from 'redux';
 import rootReducer from './reducers/index';
 
-const defaultState = {};
+const defaultState = {
+    'settings': {
+        'open': false
+    }
+};
 
 const store = createStore(rootReducer, defaultState);
 

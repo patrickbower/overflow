@@ -5,57 +5,61 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as cardActions from '../actions/cards';
-
-// utils
-import * as trello from '../utils/trello';
+import * as settingsActions from '../actions/settings';
 
 class Cardlist extends Component {
 
-    handleCheckbox(data, index, id){
-        // create new state
-        let newState = data.state === 'complete' ? 'incomplete' : 'complete';
-        // set state
-        this.props.actions.checkItem(data, index, id, newState)
-        // set trello
-        trello.checkItem(id, data.idChecklist, data.id, newState);
-    }
-
-    checkitem(data, index, id){
+    checkitem(listData, index, key){
         return (
-            <li key={data.id}>
+            <div key={listData.id}>
                 <div className="form-check mb-0">
                     <label className="custom-control custom-checkbox">
                         <input type="checkbox" className="custom-control-input app__custom-control-input"
-                            defaultChecked={ data.state === 'complete' ? true : false }
-                            onClick={ this.handleCheckbox.bind(this, data, index, id) }
+                            checked={ listData.state === 'complete' ? true : false }
+                            onChange={ () => this.props.actions.checkItem(index, key) }
                         />
                         <span className="custom-control-indicator app__custom-control-indicator" />
-                        <span className="custom-control-description app__custom-control-description">{data.name}</span>
+                        <span className="custom-control-description app__custom-control-description">{listData.name}</span>
                       </label>
                 </div>
-            </li>
+            </div>
         )
     }
 
-    cards(data){
-        // each card obj
-        return Object.keys(data).map(id => {
-            // make card with each checklist arr
+    cards(cardsData){
+        return Object.keys(cardsData).map(key => {
             return (
-                <li key={id} className="app__card p-3 mb-3">
-                    <h2 className="h5 mb-3">{ data[id].name }</h2>
-                    <ul>
-                        { data[id].checklist.map((data, index) => this.checkitem(data, index, id)) }
-                    </ul>
+                <li key={key} className="app__card p-3 mb-3">
+                    <form>
+                        <fieldset>
+                            <legend className="h5 mb-3">{ cardsData[key].name }</legend>
+                            { cardsData[key].checklist.map((listData, index) => this.checkitem(listData, index, key)) }
+                        </fieldset>
+                    </form>
                 </li>
             )
         });
     }
 
+    viewType = () => {
+        let singleCardKey = this.props.settings.singleCardView;
+
+        if (singleCardKey) {
+            return ({
+                [singleCardKey]: this.props.cards[singleCardKey]
+            })
+        } else {
+            return this.props.cards
+        }
+    }
+
     render(){
+
+        let data = this.viewType();
+
         return(
             <ul>
-                { this.cards(this.props.cards) }
+                { this.cards(data) }
             </ul>
         )
     }
@@ -63,13 +67,15 @@ class Cardlist extends Component {
 
 function mapStateToProps(state, props) {
     return {
-        cards: state.cards
+        cards: state.cards,
+        settings: state.settings
     };
 }
 
 function mapDispatchToProps(dispatch) {
+    const combineActions = Object.assign({}, cardActions, settingsActions);
     return {
-        actions: bindActionCreators(cardActions, dispatch)
+        actions: bindActionCreators(combineActions, dispatch)
     }
 }
 
