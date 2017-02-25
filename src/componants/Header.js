@@ -8,7 +8,7 @@ import * as settingsActions from '../actions/settings';
 
 class Header extends Component {
 
-    modalOpen(){
+    modalOpen = () => {
         this.props.actions.modalToggle('open')
     }
 

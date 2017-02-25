@@ -9,7 +9,7 @@ import * as settingsActions from '../actions/settings';
 
 class Cardlist extends Component {
 
-    checkitem(listData, index, key){
+    checkitem = (listData, index, key) => {
         return (
             <div key={listData.id}>
                 <div className="form-check mb-0">
@@ -26,16 +26,8 @@ class Cardlist extends Component {
         )
     }
 
-    cards(cardsData){
+    cards = (cardsData) => {
         return Object.keys(cardsData).map(key => {
-
-            // console.group('cards data mapping');
-            // console.log('key', cardsData[key]);
-            // console.log('checklist', cardsData[key].checklist);
-            // console.log('length', cardsData[key].checklist.length);
-            // console.groupEnd();
-            //// no checklist array exsits at this point
-
             return (
                 <li key={key} className="app__card p-3 mb-3">
                     <form>

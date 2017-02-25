@@ -15,15 +15,13 @@ class Settings extends Component {
     newCardSubmit = (event) => {
         event.preventDefault();
         let title = this.refs.newCard.value;
-        Trello.makecard(title, this.addCardToStore.bind(this));
+        Trello.makecard(title, this.createCard.bind(this));
     }
 
-    addCardToStore(data) {
-        // call getChecklists(cardDataObj) in App.js
-        // instead of...
-        // this.props.actions.addCard(data);
-
-        this.props.getChecklists(data)
+    // uses method passed down from App
+    createCard = (data) => {
+        this.props.getChecklists(data);
+        this.closeModal();
     }
 
     currentCardSubmit = (event) => {

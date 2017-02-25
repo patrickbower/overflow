@@ -19,7 +19,7 @@ class Modal extends Component {
     // do i need aria and z-index shit ?
 
 
-    closeModal(){
+    closeModal = () => {
         this.props.actions.modalToggle('close')
     }
 
