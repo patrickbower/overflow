@@ -12,9 +12,9 @@ export function checkItem(index, key){
     }
 }
 
-export function addCard(title){
+export function addCard(data){
     return {
         type: 'ADD_CARD',
-        title
+        data
     }
 }

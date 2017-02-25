@@ -8,16 +8,23 @@ import * as cardActions from '../actions/cards';
 import * as settingsActions from '../actions/settings';
 
 // utils
-// import * as Trello from '../utils/trello';
+import * as Trello from '../utils/trello';
 
 class Settings extends Component {
 
-    // handleAddSubmit(event) {
-    //     event.preventDefault();
-    //     let title = this.refs.title.value;
-    //     this.props.actions.addCard(title);
-    //     Trello.makecard(title, this.closeModal.bind(this));
-    // }
+    newCardSubmit = (event) => {
+        event.preventDefault();
+        let title = this.refs.newCard.value;
+        Trello.makecard(title, this.addCardToStore.bind(this));
+    }
+
+    addCardToStore(data) {
+        // call getChecklists(cardDataObj) in App.js
+        // instead of...
+        // this.props.actions.addCard(data);
+
+        this.props.getChecklists(data)
+    }
 
     currentCardSubmit = (event) => {
         event.preventDefault();
@@ -41,11 +48,11 @@ class Settings extends Component {
     render(){
         return (
             <div>
-                <form>
+                <form onSubmit={ this.newCardSubmit }>
                     <div className="form-group">
                         <div className="row">
                             <div className="col-md-9">
-                                <input type="text" className="form-control mb-2" placeholder="Add a new card" />
+                                <input type="text" ref="newCard" className="form-control mb-2" placeholder="Add a new card" />
                             </div>
                             <div className="col-md-3">
                                 <button type="submit" className="btn btn-primary w-100">Add</button>

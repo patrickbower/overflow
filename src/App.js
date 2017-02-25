@@ -13,7 +13,7 @@ import './styles/app.css';
 
 // utils
 import config from './utils/config';
-import * as trello from './utils/trello';
+import * as Trello from './utils/trello';
 
 // componants
 import Cardlist from './componants/Cardlist';
@@ -27,37 +27,53 @@ class App extends Component {
         super(props);
 
         // init fetch for cards
-        trello.getCards(config.toDoListID, this.getCards.bind(this));
+        Trello.getCards(config.toDoListID, this.getCards.bind(this));
     }
 
     // fetch cards
     getCards(cardData) {
         // each card
-        cardData.map(cardDataItem => {
+        cardData.map(cardDataObj => {
             // get list
-            return this.getChecklists(cardDataItem);
+            return this.getChecklists(cardDataObj);
         })
     }
 
     // fetch checklists
-    getChecklists(cardDataItem){
-        // ensure checklist
-        if (cardDataItem.idChecklists.length) {
-            // get list
-            trello.getChecklist(cardDataItem.idChecklists[0]).then(checkListData => {
-                // add checklist to card obj
-                let data = Object.assign(cardDataItem, { 'checklist': checkListData} );
-                // add to store
-                this.props.actions.makecards(data);
-            });
+    getChecklists(cardDataObj){
+
+        // if checklist
+        if (cardDataObj.idChecklists.length) {
+            this.setChecklists(cardDataObj.idChecklists[0], cardDataObj);
+        // no checklist
+        } else {
+            // create checklist, returning data to use
+            // to go again and get the whole card
+            Trello.createCheckList(cardDataObj.id, this.getCard.bind(this));
         }
+    }
+
+    // go again and get the whole card returning
+    // back to the getChecklists function
+    getCard(data){
+        Trello.getCard(data.idCard, this.getChecklists.bind(this));
+    }
+
+    setChecklists(checklistId, cardDataObj){
+        // get list
+        Trello.getChecklist(checklistId).then(checkListData => {
+            // add checklist to card obj
+            let data = Object.assign(cardDataObj, { 'checklist': checkListData} );
+            // add to store
+            this.props.actions.makecards(data);
+        });
     }
 
     render() {
         return (
             <div>
                 <Header />
-                <Modal />
+                <Modal getChecklists={this.getChecklists.bind(this)}/>
                 <div className="container-fluid vertical-center mb-5 mt-5">
                     <div className="row">
                         <div className="col col-12">

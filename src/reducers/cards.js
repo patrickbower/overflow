@@ -35,8 +35,7 @@ function cards(state = {}, action) {
             return cloneState;
 
         case 'ADD_CARD':
-            console.log('add cards', action.title);
-            return state;
+            return { ...state, [action.data.id] : action.data }
 
         // default
         default:

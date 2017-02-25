@@ -22,6 +22,11 @@ function send(request, callback) {
         });
 }
 
+export function getCard(cardId, callback) {
+    const request = `${config.url}/1/cards/${cardId}?key=${config.key}&token=${config.token}`;
+    fetch(request, callback);
+}
+
 export function getCards(listId, callback) {
     const request = `${config.url}/1/lists/${listId}/cards?key=${config.key}&token=${config.token}`;
     fetch(request, callback);
@@ -50,10 +55,9 @@ export function checkItem(cardId, idChecklist, idCheckItem, checkValue) {
         .put(request);
 }
 
-export function createCheckList(cardId) {
+export function createCheckList(cardId, callback) {
     const request = `${config.url}/1/cards/${cardId}/checklists?key=${config.key}&token=${config.token}`;
-    return axios
-        .post(request);
+    send(request, callback);
 }
 
 export function addCheckItem(idChecklist, checkItemName, callback) {
