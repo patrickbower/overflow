@@ -37,7 +37,7 @@ class Modal extends Component {
                                     <button type="button" className="close" onClick={this.closeModal.bind(this)}><span>&times;</span></button>
                                 </div>
                                 <div className="modal-body">
-                                    <Settings />
+                                    <Settings getChecklists={this.props.getChecklists.bind(this)}/>
                                 </div>
                             </div>
                         </div>

@@ -12,23 +12,18 @@ import * as Trello from '../utils/trello';
 
 class Settings extends Component {
 
-    // handleAddSubmit(event) {
-    //     event.preventDefault();
-    //     let title = this.refs.title.value;
-    //     this.props.actions.addCard(title);
-    //     Trello.makecard(title, this.closeModal.bind(this));
-    // }
-
     newCardSubmit = (event) => {
         event.preventDefault();
         let title = this.refs.newCard.value;
-        // this.props.actions.addCard(title);
-
-        Trello.makecard(title, this.addCardToStore());
+        Trello.makecard(title, this.addCardToStore.bind(this));
     }
 
     addCardToStore(data) {
-        console.log(data);
+        // call getChecklists(cardDataObj) in App.js
+        // instead of...
+        // this.props.actions.addCard(data);
+
+        this.props.getChecklists(data)
     }
 
     currentCardSubmit = (event) => {
