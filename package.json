@@ -2,7 +2,7 @@
   "name": "overflow",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://myname.github.io/overflow"
+  "homepage": "http://myname.github.io/overflow",
   "devDependencies": {
     "react-scripts": "0.8.5"
   },
