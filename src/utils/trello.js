@@ -8,12 +8,12 @@ function fetch(request, callback) {
         });
 }
 
-function place(request, callback) {
-    axios.put(request)
-        .then(response => {
-            callback(response.data);
-        });
-}
+// function place(request, callback) {
+//     axios.put(request)
+//         .then(response => {
+//             callback(response.data);
+//         });
+// }
 
 function send(request, callback) {
     axios.post(request)
@@ -39,9 +39,10 @@ export function getChecklist(checklistId) {
         .then(response => response.data.checkItems);
 }
 
-export function removeCard(cardId, callback) {
+export function removeCard(cardId) {
     const request = `${config.url}/1/cards/${cardId}/idList?key=${config.key}&token=${config.token}&value=${config.doneListID}`;
-    place(request, callback);
+    return axios
+        .put(request);
 }
 
 export function makecard(cardName, callback) {

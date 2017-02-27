@@ -25,3 +25,10 @@ export function addCard(data){
         data
     }
 }
+
+export function deleteCard(key){
+    return {
+        type: 'DELETE_CARD',
+        key
+    }
+}
