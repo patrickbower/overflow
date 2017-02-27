@@ -11,31 +11,28 @@ function cards(state = {}, action) {
 
         // checklist item status
         case 'CARDS_CHECK_ITEM':
+            let CardsCheckItemState = JSON.parse(JSON.stringify(state));
+            let CardsCheckItemStateObj = CardsCheckItemState[action.key].checklist[action.index];
+            let newState = CardsCheckItemStateObj.state === 'complete' ? 'incomplete' : 'complete';
+            CardsCheckItemState[action.key].checklist[action.index].state = newState;
 
-            // copy object
-            let cloneState = JSON.parse(JSON.stringify(state));
-
-            // get check object
-            let ChecklistObj = cloneState[action.key].checklist[action.index];
-
-            // create new state
-            let newState = ChecklistObj.state === 'complete' ? 'incomplete' : 'complete';
-
-            // set new state in cloned object
-            cloneState[action.key].checklist[action.index].state = newState;
-
-            // ping trello api
             Trello.checkItem(
                 action.key,
-                ChecklistObj.idChecklist,
-                ChecklistObj.id,
+                CardsCheckItemStateObj.idChecklist,
+                CardsCheckItemStateObj.id,
                 newState
             );
 
-            return cloneState;
+            return CardsCheckItemState;
 
         case 'ADD_CARD':
             return { ...state, [action.data.id] : action.data }
+
+        case 'NEW_CHECK_ITEM':
+            let newCheckItemState = JSON.parse(JSON.stringify(state));
+            let newCheckItemCheckList = Object.assign([], state[action.key].checklist.concat(action.data));
+            newCheckItemState[action.key].checklist = newCheckItemCheckList;
+            return newCheckItemState;
 
         // default
         default:

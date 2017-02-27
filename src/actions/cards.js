@@ -12,6 +12,13 @@ export function checkItem(index, key){
     }
 }
 
+export function newCheckItem(data, key){
+    return {
+        type: 'NEW_CHECK_ITEM',
+        data, key
+    }
+}
+
 export function addCard(data){
     return {
         type: 'ADD_CARD',

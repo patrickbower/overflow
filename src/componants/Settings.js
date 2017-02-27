@@ -18,17 +18,17 @@ class Settings extends Component {
         Trello.makecard(title, this.createCard.bind(this));
     }
 
-    // uses method passed down from App
     createCard = (data) => {
+        // (getChecklists) method passed down from App
         this.props.getChecklists(data);
-        this.closeModal();
+        this.props.actions.modalToggle('close');
     }
 
     currentCardSubmit = (event) => {
         event.preventDefault();
         let id = this.refs.cardSelect.value;
         this.props.actions.singleCardView(id);
-        this.closeModal();
+        this.props.actions.modalToggle('close');
     }
 
     closeModal = () => {
