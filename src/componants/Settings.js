@@ -31,11 +31,20 @@ class Settings extends Component {
         this.props.actions.modalToggle('close');
     }
 
+    deleteCardSubmit = (event) => {
+        event.preventDefault();
+        let id = this.refs.cardDelete.value;
+        this.props.actions.deleteCard(id);
+        Trello.removeCard(id);
+        this.props.actions.modalToggle('close');
+
+    }
+
     closeModal = () => {
         this.props.actions.modalToggle('close');
     }
 
-    selectInputOptions = (cards) => {
+    inputOptions = (cards) => {
         return Object.keys(cards).map(key => {
             return (
                 <option key={key} value={key}>{ cards[key].name }</option>
@@ -50,7 +59,9 @@ class Settings extends Component {
                     <div className="form-group">
                         <div className="row">
                             <div className="col-md-9">
-                                <input type="text" ref="newCard" className="form-control mb-2" placeholder="Add a new card" />
+                                <input type="text" className="form-control mb-2" placeholder="Add a new card"
+                                    ref="newCard"
+                                />
                             </div>
                             <div className="col-md-3">
                                 <button type="submit" className="btn btn-primary w-100">Add</button>
@@ -59,15 +70,14 @@ class Settings extends Component {
                     </div>
                 </form>
 
-                <form>
+                <form onSubmit={ this.deleteCardSubmit }>
                     <div className="form-group">
                         <div className="row">
                             <div className="col-md-9">
-                                <select className="custom-select w-100 mb-2">
-                                    <option defaultValue>Remove a card</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select className="custom-select w-100 mb-2"
+                                        ref="cardDelete">
+                                    <option>Remove a card</option>
+                                    { this.inputOptions(this.props.cards) }
                                 </select>
                             </div>
                             <div className="col-md-3">
@@ -81,9 +91,10 @@ class Settings extends Component {
                     <div className="form-group">
                         <div className="row">
                             <div className="col-md-9">
-                                <select className="custom-select w-100 mb-2" ref="cardSelect">
-                                    <option defaultValue>Current card</option>
-                                    { this.selectInputOptions(this.props.cards) }
+                                <select className="custom-select w-100 mb-2"
+                                        ref="cardSelect">
+                                    <option>Current card</option>
+                                    { this.inputOptions(this.props.cards) }
                                 </select>
                             </div>
                             <div className="col-md-3">

@@ -34,6 +34,11 @@ function cards(state = {}, action) {
             newCheckItemState[action.key].checklist = newCheckItemCheckList;
             return newCheckItemState;
 
+        case 'DELETE_CARD':
+            let newDeleteCardState = JSON.parse(JSON.stringify(state));
+            delete newDeleteCardState[action.key]
+            return newDeleteCardState;
+
         // default
         default:
             return state;
