@@ -17,7 +17,6 @@ import * as Trello from './utils/trello';
 
 // componants
 import Cardlist from './componants/Cardlist';
-import CardControls from './componants/CardControls';
 import Header from './componants/Header';
 import Modal from './componants/Modal';
 
@@ -78,11 +77,6 @@ class App extends Component {
                     <div className="row">
                         <div className="col col-12">
                             <Cardlist cards={this.props.cards} />
-                        </div>
-                    </div>
-                    <div className="row justify-content-center">
-                        <div className="col col-12">
-                            <CardControls />
                         </div>
                     </div>
                 </div>

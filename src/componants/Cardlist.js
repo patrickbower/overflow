@@ -9,6 +9,10 @@ import * as settingsActions from '../actions/settings';
 
 class Cardlist extends Component {
 
+    addCheckitem = () => {
+        console.log('add check item');
+    }
+
     checkitem = (listData, index, key) => {
         return (
             <div key={listData.id}>
@@ -36,6 +40,10 @@ class Cardlist extends Component {
                             { cardsData[key].checklist.map((listData, index) => this.checkitem(listData, index, key)) }
                         </fieldset>
                     </form>
+                    <div className="d-flex">
+                        <span className="app__add-new-item-icon">+</span>
+                        <input type="text" className="app__add-new-item-input w-100" placeholder="Add item"/>
+                    </div>
                 </li>
             )
         });
