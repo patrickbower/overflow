@@ -7,7 +7,28 @@ import { connect } from 'react-redux';
 import * as cardActions from '../actions/cards';
 import * as settingsActions from '../actions/settings';
 
+// utils
+import * as Trello from '../utils/trello';
+
 class Cardlist extends Component {
+
+    constructor(props){
+        super(props);
+        this.cardKeyAddItem = null;
+    }
+
+
+    addCheckitem = (event, id, key) => {
+        if (event.key === 'Enter' && event.target.value.length) {
+            this.cardKeyAddItem = key;
+            Trello.addCheckItem(id, event.target.value, this.addToStore.bind(this));
+            event.target.value = '';
+        }
+    }
+
+    addToStore = (data) => {
+        this.props.actions.newCheckItem(data, this.cardKeyAddItem);
+    }
 
     checkitem = (listData, index, key) => {
         return (
@@ -36,6 +57,13 @@ class Cardlist extends Component {
                             { cardsData[key].checklist.map((listData, index) => this.checkitem(listData, index, key)) }
                         </fieldset>
                     </form>
+                    <div className="d-flex">
+                        <span className="app__add-new-item-icon">+</span>
+                        <input type="text" className="app__add-new-item-input w-100" placeholder="Add item"
+                            onKeyPress={ (event) => this.addCheckitem(event, cardsData[key].idChecklists[0], key) }
+                            ref="addCheckitemInput"
+                        />
+                    </div>
                 </li>
             )
         });
