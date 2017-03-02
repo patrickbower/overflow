@@ -19,6 +19,7 @@ import * as Trello from './utils/trello';
 import Cardlist from './componants/Cardlist';
 import Header from './componants/Header';
 import Modal from './componants/Modal';
+import Clock from './componants/Clock';
 
 class App extends Component {
 
@@ -72,6 +73,7 @@ class App extends Component {
         return (
             <div>
                 <Header />
+                <Clock />
                 <Modal getChecklists={this.getChecklists.bind(this)}/>
                 <div className="container-fluid vertical-center mb-5 mt-5">
                     <div className="row">
