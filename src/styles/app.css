@@ -18,6 +18,10 @@ body {
     color: var(--grey-8);
 }
 
+*:focus {
+    outline: none!important;
+}
+
 /*
  * Layout
  */

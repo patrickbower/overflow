@@ -17,25 +17,29 @@ class Clock extends Component {
             isRunning: false
         })
 
-        this.countdownLength = 20;
-        this.countdownSeconds = this.countdownLength * 60;
-        this.linelengthTick = 282.74 / this.countdownSeconds;
+        // 262.24
+
+        this.settings = {
+            time: 20,
+            svglinelength: 282.74
+        }
+        const { time, svglinelength } = this.settings;
+
+        this.countTime = time * 60;
+        this.linelengthTick = svglinelength / this.countTime;
         this.runningLength = 0;
 
         this.countdown = new Timer({
             tick    : 1,
             ontick  : () => this.tick(),
             onstart : () => this.started(),
-            onstop  : () => this.stopped(),
             onpause : () => this.paused(),
             onend   : () => this.ended()
         });
     }
 
-    // every 60 seconds
     tick() {
-        this.runningLength += this.linelengthTick;
-        let newPos = Math.round(this.runningLength * 100) / 100;
+        let newPos = this.runningLength += this.linelengthTick;
         this.setState({ position: newPos });
 
         console.log(newPos);
@@ -51,14 +55,17 @@ class Clock extends Component {
 
     ended() {
         alert('Times up bucco!');
+        this.setState({
+            position: 0,
+            isRunning: false
+        });
     }
 
     startTimer(){
-
         if (this.state.isRunning) {
             this.countdown.start();
         } else {
-            this.countdown.start(this.countdownSeconds);
+            this.countdown.start(this.countTime);
         }
     }
 
