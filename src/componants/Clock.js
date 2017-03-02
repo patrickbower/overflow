@@ -17,8 +17,6 @@ class Clock extends Component {
             isRunning: false
         })
 
-        // 262.24
-
         this.settings = {
             time: 20,
             svglinelength: 282.74
@@ -41,8 +39,6 @@ class Clock extends Component {
     tick() {
         let newPos = this.runningLength += this.linelengthTick;
         this.setState({ position: newPos });
-
-        console.log(newPos);
     }
 
     started() {
