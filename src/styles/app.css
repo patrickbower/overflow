@@ -78,3 +78,45 @@ body {
 ::-webkit-input-placeholder {
     color: var(--grey-4);
 }
+
+
+
+
+
+
+
+
+
+
+.timer-wrap {
+    position: relative;
+}
+
+#timeline {
+    fill: transparent;
+    stroke-dasharray: 282.74;
+    stroke-dashoffset: 0;
+    stroke: white;
+    stroke-width: 30;
+    stroke-opacity: 0.3;
+    /*stroke-linecap: round;*/
+    transition: all 0.3s ease-out;
+}
+
+.timer-btn {
+    width: 70px;
+    height: 70px;
+    background: var(--grey-2);
+    color: var(--grey-8);
+    border-radius: 50%;
+    border: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -35px 0 0 -35px;
+    box-shadow: 0 0 25px 10px rgba(0,0,0,0.25);
+}
+
+.timer-btn:hover {
+    cursor: pointer;
+}
