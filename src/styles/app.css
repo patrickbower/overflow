@@ -46,6 +46,29 @@ body {
 }
 
 /*
+ * Icons
+ */
+
+ .icon-action {
+     display: block;
+     text-indent: -9999px;
+     width: 35px;
+     height: 28px;
+     background: url('icons/sprite.svg');
+     background-repeat: no-repeat;
+     background-size: 100px 100px;
+ }
+ .icon-action--plus {
+     background-position: -70px -37px;
+ }
+ .icon-action--cross {
+     background-position: -36px -37px;
+ }
+ .icon-action--tick {
+     background-position: 0 -37px;
+ }
+
+/*
  * Cards
  */
 
@@ -80,6 +103,10 @@ body {
 }
 
 .app__card-check {
+    float: right;
+}
+
+.app__card-icon {
     float: right;
 }
 
