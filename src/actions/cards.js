@@ -32,3 +32,24 @@ export function deleteCard(key){
         key
     }
 }
+
+export function activeItem(index, key){
+    return {
+        type: 'CARDS_ACTIVE_ITEM',
+        index, key
+    }
+}
+
+export function changeActiveItem(index, key){
+    return {
+        type: 'CARDS_CHANGE_ACTIVE_ITEM',
+        index, key
+    }
+}
+
+export function deselectActiveItem(index, key){
+    return {
+        type: 'CARDS_DESELECT_ACTIVE_ITEM',
+        index, key
+    }
+}

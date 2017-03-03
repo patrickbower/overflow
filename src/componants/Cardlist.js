@@ -30,15 +30,43 @@ class Cardlist extends Component {
         this.props.actions.newCheckItem(data, this.cardKeyAddItem);
     }
 
+    itemState = (index, key) => {
+
+        let activeItemObj = this.props.cards[key].activeItem;
+
+        // new item - either new or others have been unselected
+        if (typeof activeItemObj === 'undefined' || typeof activeItemObj === false) {
+            this.props.actions.activeItem(index, key);
+        // deselect an active item
+        } else if (typeof activeItemObj === 'number' && activeItemObj === index) {
+            this.props.actions.deselectActiveItem(index, key);
+        // select differnt item - unselect one and select a differnt one
+        } else if (typeof activeItemObj === 'number') {
+            this.props.actions.changeActiveItem(index, key);
+        }
+
+
+    }
+
     checkitem = (listData, index, key) => {
-        console.log(listData);
         return (
-            <div key={listData.id} className={`app__card-item ${listData.state === 'complete' ? 'complete' : ''}`}>
+            <div
+                key={listData.id}
+                onClick={ () => this.itemState(index, key) }
+                className={
+                    `
+                        app__card-item
+                        ${listData.state === 'complete' ? 'complete' : ''}
+                        ${listData.activeItem ? 'active' : ''}
+                    `
+                }
+            >
                 <div className="app__card-indicator"></div>
                 <label className="app__card-label">{listData.name}</label>
                 <input type="checkbox" className="app__card-check"
                     checked={ listData.state === 'complete' ? true : false }
-                    onChange={ () => this.props.actions.checkItem(index, key) } />
+                    onChange={ () => this.props.actions.checkItem(index, key) }
+                />
             </div>
         )
     }

@@ -91,6 +91,10 @@ body {
     color: var(--red-light);
 }
 
+.app__card-item.active{
+    background: blue;
+}
+
 .app__card-item.complete .app__card-indicator {
     border: 2px solid var(--red-light);
     background: var(--red-light);

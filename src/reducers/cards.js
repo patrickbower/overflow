@@ -39,6 +39,28 @@ function cards(state = {}, action) {
             delete newDeleteCardState[action.key]
             return newDeleteCardState;
 
+        case 'CARDS_ACTIVE_ITEM':
+            let newActiveItemState = JSON.parse(JSON.stringify(state));
+            newActiveItemState[action.key].activeItem = action.index;
+            newActiveItemState[action.key].checklist[action.index].activeItem = true;
+            return newActiveItemState;
+
+        case 'CARDS_CHANGE_ACTIVE_ITEM':
+            let newChangeItemState = JSON.parse(JSON.stringify(state));
+            let prevActiveItem = newChangeItemState[action.key].activeItem;
+            // remove the checklist array item activeItem boolean
+            delete newChangeItemState[action.key].checklist[prevActiveItem].activeItem;
+            // set new checklist array item activeItem boolean
+            newChangeItemState[action.key].checklist[action.index].activeItem = true;
+            // change the cards activeItem index value
+            newChangeItemState[action.key].activeItem = action.index;
+            return newChangeItemState;
+
+        case 'CARDS_DESELECT_ACTIVE_ITEM':
+            let deselectItemState = JSON.parse(JSON.stringify(state));
+            delete deselectItemState[action.key].checklist[action.index].activeItem;
+            return deselectItemState;
+
         // default
         default:
             return state;
