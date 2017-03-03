@@ -59,6 +59,7 @@ function cards(state = {}, action) {
         case 'CARDS_DESELECT_ACTIVE_ITEM':
             let deselectItemState = JSON.parse(JSON.stringify(state));
             delete deselectItemState[action.key].checklist[action.index].activeItem;
+            deselectItemState[action.key].activeItem = false;
             return deselectItemState;
 
         // default

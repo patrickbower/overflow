@@ -30,12 +30,14 @@ class Cardlist extends Component {
         this.props.actions.newCheckItem(data, this.cardKeyAddItem);
     }
 
-    itemState = (index, key) => {
+    itemState = (index, key, state) => {
+
+        if (state === 'complete') return false;
 
         let activeItemObj = this.props.cards[key].activeItem;
 
         // new item - either new or others have been unselected
-        if (typeof activeItemObj === 'undefined' || typeof activeItemObj === false) {
+        if (typeof activeItemObj === 'undefined' || activeItemObj === false) {
             this.props.actions.activeItem(index, key);
         // deselect an active item
         } else if (typeof activeItemObj === 'number' && activeItemObj === index) {
@@ -44,23 +46,20 @@ class Cardlist extends Component {
         } else if (typeof activeItemObj === 'number') {
             this.props.actions.changeActiveItem(index, key);
         }
-
-
     }
 
     checkitem = (listData, index, key) => {
         return (
             <div
                 key={listData.id}
-                onClick={ () => this.itemState(index, key) }
-                className={
-                    `
+                onClick={ () => this.itemState(index, key, listData.state) }
+                className={`
                         app__card-item
                         ${listData.state === 'complete' ? 'complete' : ''}
                         ${listData.activeItem ? 'active' : ''}
-                    `
-                }
+                    `}
             >
+                <div className={`app__card-background ${listData.activeItem ? 'active' : ''}`}></div>
                 <div className="app__card-indicator"></div>
                 <label className="app__card-label">{listData.name}</label>
                 <input type="checkbox" className="app__card-check"
