@@ -31,18 +31,14 @@ class Cardlist extends Component {
     }
 
     checkitem = (listData, index, key) => {
+        console.log(listData);
         return (
-            <div key={listData.id}>
-                <div className="form-check mb-0">
-                    <label className="custom-control custom-checkbox">
-                        <input type="checkbox" className="custom-control-input app__custom-control-input"
-                            checked={ listData.state === 'complete' ? true : false }
-                            onChange={ () => this.props.actions.checkItem(index, key) }
-                        />
-                        <span className="custom-control-indicator app__custom-control-indicator" />
-                        <span className="custom-control-description app__custom-control-description">{listData.name}</span>
-                      </label>
-                </div>
+            <div key={listData.id} className={`app__card-item ${listData.state === 'complete' ? 'complete' : ''}`}>
+                <div className="app__card-indicator"></div>
+                <label className="app__card-label">{listData.name}</label>
+                <input type="checkbox" className="app__card-check"
+                    checked={ listData.state === 'complete' ? true : false }
+                    onChange={ () => this.props.actions.checkItem(index, key) } />
             </div>
         )
     }
@@ -53,7 +49,7 @@ class Cardlist extends Component {
                 <li key={key} className="app__card p-3 mb-3">
                     <form>
                         <fieldset>
-                            <legend className="h5 mb-3">{ cardsData[key].name }</legend>
+                            <legend className="h5 mb-4 text-center font-weight-bold">{ cardsData[key].name }</legend>
                             { cardsData[key].checklist.map((listData, index) => this.checkitem(listData, index, key)) }
                         </fieldset>
                     </form>
