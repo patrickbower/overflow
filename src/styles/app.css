@@ -69,6 +69,69 @@ body {
  }
 
 /*
+ * Nav
+ */
+
+.app__navbar {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* Settings */
+.app__settings {
+    position: relative;
+    top: 5px;
+    z-index: 1;
+}
+
+.app__settings-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url('icons/cog.svg');
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+}
+
+.app__settings-menu {
+    position: absolute;
+    top: 45px;
+    right:  -9999px;
+    width: auto;
+    background: var(--white-0);
+    color: var(--red-0);
+    box-shadow: 0 0 25px 5px var(--red-shadow);
+}
+
+.app__settings-menu:before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid var(--white-0);
+    right: 15px;
+}
+
+.app__settings-menu-item {
+    padding: 5px 30px 5px 10px;
+    display: block;
+    white-space: nowrap;
+}
+
+.app__settings-menu-item:hover {
+    background: var(--red-0);
+    color: var(--white-0);
+}
+
+.app__settings:hover .app__settings-menu {
+    right: -10px;
+    cursor: pointer;
+}
+
+/*
  * Cards
  */
 
@@ -199,7 +262,7 @@ body {
  * timer
  */
 
-.timer-wrap {
+.app__timer-wrap {
     position: relative;
 }
 
@@ -214,7 +277,7 @@ body {
     transition: all 0.3s ease-out;
 }
 
-.timer-btn {
+.app__timer-btn {
     width: 70px;
     height: 70px;
     background: var(--red-0);
@@ -228,6 +291,6 @@ body {
     box-shadow: 0 0 20px 5px var(--red-shadow);
 }
 
-.timer-btn:hover {
+.app__timer-btn:hover {
     cursor: pointer;
 }

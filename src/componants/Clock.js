@@ -72,15 +72,15 @@ class Clock extends Component {
     render(){
         let strokeDashoffset = this.state.position;
         let buttonType = this.state.isRunning ?
-            <button className="timer-btn" onClick={ this.pauseTimer.bind(this) }><b>||</b></button> :
-            <button className="timer-btn" onClick={ this.startTimer.bind(this) }>&#9658;</button> ;
+            <button className="app__timer-btn" onClick={ this.pauseTimer.bind(this) }><b>||</b></button> :
+            <button className="app__timer-btn" onClick={ this.startTimer.bind(this) }>&#9658;</button> ;
 
         return(
             <div>
 
-                <div className="timer-wrap d-flex justify-content-center">
+                <div className="app__timer-wrap d-flex justify-content-center">
                     { buttonType }
-                    <svg className="timer" width="150" height="150" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="app__timer" width="150" height="150" version="1.1" xmlns="http://www.w3.org/2000/svg">
                         <circle ref="timeline" id="timeline" r="45" cx="75" cy="75"
                                 style={{strokeDashoffset}}>
                         </circle>
