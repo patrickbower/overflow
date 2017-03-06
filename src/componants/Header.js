@@ -20,12 +20,12 @@ class Header extends Component {
                 <h1 className="navbar-brand mb-0">OverFlow</h1>
 
                 <div className="app__settings">
-                    <span className="app__settings-icon"></span>
+                    <a href="#" className="app__settings-icon"></a>
                     <div className="app__settings-menu">
-                        <span className="app__settings-menu-item">Add card</span>
-                        <span className="app__settings-menu-item">Remove card</span>
-                        <span className="app__settings-menu-item">Card view</span>
-                        <span className="app__settings-menu-item">Hide timer</span>
+                        <a href="#" onClick={this.modalOpen.bind(this)} className="app__settings-menu-item">Add card</a>
+                        <a href="#" onClick={this.modalOpen.bind(this)} className="app__settings-menu-item">Remove card</a>
+                        <a href="#" onClick={this.modalOpen.bind(this)} className="app__settings-menu-item">Card view</a>
+                        <a href="#" onClick={this.modalOpen.bind(this)} className="app__settings-menu-item">Hide timer</a>
                     </div>
                 </div>
             </nav>

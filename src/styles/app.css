@@ -88,7 +88,9 @@ body {
     display: inline-block;
     width: 30px;
     height: 30px;
+    padding-left: 50px;
     background: url('icons/cog.svg');
+    background-position: center right;
     background-repeat: no-repeat;
     background-size: 30px 30px;
 }
@@ -119,6 +121,12 @@ body {
     padding: 5px 30px 5px 10px;
     display: block;
     white-space: nowrap;
+    text-decoration: none;
+    color: inherit;
+}
+
+.app__settings-menu-item:hover {
+    text-decoration: none;
 }
 
 .app__settings-menu-item:hover {
