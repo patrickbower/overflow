@@ -7,6 +7,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as settingsActions from '../actions/settings';
 
+
+
 class Clock extends Component {
 
     constructor(props){
@@ -75,20 +77,22 @@ class Clock extends Component {
             <button className="app__timer-btn" onClick={ this.pauseTimer.bind(this) }><b>||</b></button> :
             <button className="app__timer-btn" onClick={ this.startTimer.bind(this) }>&#9658;</button> ;
 
-        return(
-            <div>
-
-                <div className="app__timer-wrap d-flex justify-content-center">
-                    { buttonType }
-                    <svg className="app__timer" width="150" height="150" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                        <circle ref="timeline" id="timeline" r="45" cx="75" cy="75"
-                                style={{strokeDashoffset}}>
-                        </circle>
-                    </svg>
+        if (this.props.settings.clockVisible) {
+            return (
+                <div>
+                    <div className="app__timer-wrap d-flex justify-content-center">
+                        { buttonType }
+                        <svg className="app__timer" width="150" height="150" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                            <circle ref="timeline" id="timeline" r="45" cx="75" cy="75"
+                                    style={{strokeDashoffset}}>
+                            </circle>
+                        </svg>
+                    </div>
                 </div>
-
-            </div>
-        )
+            )
+        } else {
+            return false;
+        }
     }
 }
 

@@ -9,14 +9,16 @@ import * as settingsActions from '../actions/settings';
 class Header extends Component {
 
     modalOpen = (content) => {
-        // 'add-card'
-        // 'remove-card'
-        // 'single-card-view'
-        // 'hide-timer'
-        this.props.actions.modalToggle(content, 'open')
+        this.props.actions.modalToggle(content, 'open');
     }
 
-    // onClick={this.modalOpen.bind(this)}
+    timerToggle = () => {
+        if (this.props.settings.clockVisible) {
+            this.props.actions.timerToggle('hide');
+        } else {
+            this.props.actions.timerToggle('show');
+        }
+    }
 
     render(){
         return(
@@ -29,7 +31,9 @@ class Header extends Component {
                         <a href="#" onClick={() => this.modalOpen('add-card')} className="app__settings-menu-item">Add card</a>
                         <a href="#" onClick={() => this.modalOpen('remove-card')} className="app__settings-menu-item">Remove card</a>
                         <a href="#" onClick={() => this.modalOpen('single-card-view')} className="app__settings-menu-item">Card view</a>
-                        <a href="#" onClick={() => this.modalOpen('hide-timer')} className="app__settings-menu-item">Hide timer</a>
+                        <a href="#" onClick={() => this.timerToggle()} className="app__settings-menu-item">
+                            {`${this.props.settings.clockVisible ? 'Hide' : 'Show'}`} timer
+                        </a>
                     </div>
                 </div>
             </nav>

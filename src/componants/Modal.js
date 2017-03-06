@@ -11,20 +11,12 @@ import Settings from './Settings';
 
 class Modal extends Component {
 
-
-    // add 'show' className to .modal
-    // add style={{display: 'block'}} to .modal
-    // add 'modal-open' className to <body>
-    // add <div className="modal-backdrop fade show"></div> html just before </body>
-    // do i need aria and z-index shit ?
-
-
     closeModal = () => {
         this.props.actions.modalToggle('close')
     }
 
     render(){
-        if (this.props.settings.open) {
+        if (this.props.settings.modalOpen) {
             return(
                 <div>
                 <div className="modal-backdrop show" onClick={this.closeModal.bind(this)}></div>

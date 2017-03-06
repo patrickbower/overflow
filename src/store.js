@@ -3,7 +3,8 @@ import rootReducer from './reducers/index';
 
 const defaultState = {
     'settings': {
-        'open': false
+        'modalOpen': false,
+        'clockVisible': true
     }
 };
 
