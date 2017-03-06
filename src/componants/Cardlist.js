@@ -83,7 +83,12 @@ class Cardlist extends Component {
     cards = (cardsData) => {
         return Object.keys(cardsData).map(key => {
             return (
-                <li key={key} className="app__card p-3 mb-3">
+                <li key={key}
+                    className={`
+                            app__card p-3 mb-3
+                            ${typeof cardsData[key].activeItem === 'number' ? 'active' : ''}
+                        `}
+                    ref="card">
                     <form>
                         <fieldset>
                             <legend className="h5 mb-4 text-center font-weight-bold">{ cardsData[key].name }</legend>

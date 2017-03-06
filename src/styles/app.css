@@ -111,9 +111,16 @@ body {
 }
 
 /* interactions */
+.app__card.active .app__card-background {
+    background: var(--red-light);
+}
+
+.app__card-item.active .app__card-background {
+    background: var(--white-0);
+}
+
 .app__card-item.complete {
     background: none;
-    /*border: 2px solid var(--red-light);*/
     box-shadow:inset 0px 0px 0px 2px var(--red-light);
     color: var(--red-light);
 }
@@ -130,7 +137,7 @@ body {
     left: 0;
     background: var(--white-0);
     z-index: -1;
-    transition: all .05s ease-out;
+    transition: all .04s ease-in;
 }
 
 .app__card-item.active {
