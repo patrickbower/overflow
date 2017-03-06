@@ -52,10 +52,9 @@ class Settings extends Component {
         });
     }
 
-    setContent(contentType) {
-        switch (contentType) {
-            case 'add-card':
-            return (
+    render(){
+        return (
+            <div>
                 <form onSubmit={ this.newCardSubmit }>
                     <div className="form-group">
                         <div className="row">
@@ -70,10 +69,7 @@ class Settings extends Component {
                         </div>
                     </div>
                 </form>
-            )
-            break;
-            case 'remove-card':
-            return (
+
                 <form onSubmit={ this.deleteCardSubmit }>
                     <div className="form-group">
                         <div className="row">
@@ -90,10 +86,7 @@ class Settings extends Component {
                         </div>
                     </div>
                 </form>
-            )
-            break;
-            case 'single-card-view':
-            return (
+
                 <form onSubmit={ this.currentCardSubmit }>
                     <div className="form-group">
                         <div className="row">
@@ -110,19 +103,7 @@ class Settings extends Component {
                         </div>
                     </div>
                 </form>
-            )
-            break;
-        default:
-            return (
-                <p>There has been an error</p>
-            )
-        }
-    }
 
-    render(){
-        return (
-            <div>
-                { this.setContent(this.props.settings.content) }
             </div>
         )
     }

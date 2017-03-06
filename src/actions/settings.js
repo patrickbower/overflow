@@ -1,7 +1,7 @@
-export function modalToggle(toggle){
+export function modalToggle(content, toggle){
     return {
         type: 'MODAL_TOGGLE',
-        toggle
+        content, toggle
     }
 }
 

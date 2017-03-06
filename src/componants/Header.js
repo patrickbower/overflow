@@ -8,8 +8,12 @@ import * as settingsActions from '../actions/settings';
 
 class Header extends Component {
 
-    modalOpen = () => {
-        this.props.actions.modalToggle('open')
+    modalOpen = (content) => {
+        // 'add-card'
+        // 'remove-card'
+        // 'single-card-view'
+        // 'hide-timer'
+        this.props.actions.modalToggle(content, 'open')
     }
 
     // onClick={this.modalOpen.bind(this)}
@@ -22,10 +26,10 @@ class Header extends Component {
                 <div className="app__settings">
                     <a href="#" className="app__settings-icon"></a>
                     <div className="app__settings-menu">
-                        <a href="#" onClick={this.modalOpen.bind(this)} className="app__settings-menu-item">Add card</a>
-                        <a href="#" onClick={this.modalOpen.bind(this)} className="app__settings-menu-item">Remove card</a>
-                        <a href="#" onClick={this.modalOpen.bind(this)} className="app__settings-menu-item">Card view</a>
-                        <a href="#" onClick={this.modalOpen.bind(this)} className="app__settings-menu-item">Hide timer</a>
+                        <a href="#" onClick={() => this.modalOpen('add-card')} className="app__settings-menu-item">Add card</a>
+                        <a href="#" onClick={() => this.modalOpen('remove-card')} className="app__settings-menu-item">Remove card</a>
+                        <a href="#" onClick={() => this.modalOpen('single-card-view')} className="app__settings-menu-item">Card view</a>
+                        <a href="#" onClick={() => this.modalOpen('hide-timer')} className="app__settings-menu-item">Hide timer</a>
                     </div>
                 </div>
             </nav>

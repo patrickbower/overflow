@@ -5,7 +5,10 @@ function settings(state = {}, action) {
         // toggle
         case 'MODAL_TOGGLE':
 
-            return { ...state, open: action.toggle === 'open' ? true : false }
+            return { ...state,
+                        open: action.toggle === 'open' ? true : false,
+                        content: action.content 
+                    }
 
         // single card view
         case 'SINGLE_CARD_VIEW':

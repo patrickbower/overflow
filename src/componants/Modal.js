@@ -24,7 +24,6 @@ class Modal extends Component {
     }
 
     render(){
-
         if (this.props.settings.open) {
             return(
                 <div>
@@ -34,10 +33,12 @@ class Modal extends Component {
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <h5 className="text-muted">Settings</h5>
-                                    <button type="button" className="close" onClick={this.closeModal.bind(this)}><span>&times;</span></button>
+                                    <button type="button" className="close" onClick={this.closeModal.bind(this)}>
+                                        <span>&times;</span>
+                                    </button>
                                 </div>
                                 <div className="modal-body">
-                                    <Settings getChecklists={this.props.getChecklists.bind(this)}/>
+                                    <Settings getChecklists={this.props.getChecklists.bind(this)} content={this.props.content}/>
                                 </div>
                             </div>
                         </div>
