@@ -48,11 +48,6 @@ class Cardlist extends Component {
         }
     }
 
-    // <input type="checkbox" className="app__card-check"
-    //     checked={ listData.state === 'complete' ? true : false }
-    //     onChange={ () => this.props.actions.checkItem(index, key) }
-    // />
-
     checkitem = (listData, index, key) => {
 
         let crossIcon = listData.state === 'complete' ? <span className="icon-action icon-action--cross"></span> : '';
@@ -71,8 +66,7 @@ class Cardlist extends Component {
                 <div className={`app__card-background ${listData.activeItem ? 'active' : ''}`}></div>
                 <div className="app__card-indicator"></div>
                 <label className="app__card-label">{listData.name}</label>
-                <a href="#"
-                    onClick={ () => this.props.actions.checkItem(index, key) }
+                <a  onClick={ () => this.props.actions.checkItem(index, key) }
                     className="app__card-icon">
                         { crossIcon } { tickIcon }
                 </a>

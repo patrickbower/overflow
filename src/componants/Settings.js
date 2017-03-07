@@ -108,7 +108,7 @@ class Settings extends Component {
                                 </select>
                             </div>
                             <div className="col-md-3">
-                                <button type="submit" className="btn app__form-btn">Confirm</button>
+                                <button type="submit" className="btn app__form-btn">View</button>
                             </div>
                         </div>
                     </fieldset>
