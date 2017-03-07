@@ -27,7 +27,7 @@ class Header extends Component {
                 <div>
                     <img src={ logo } className="app__logo"/>
                     <small className="app__small">
-                        made for fun by <a href="www.patrickbower.com">Patrick Bower</a>
+                        made for fun by <a href="http://www.patrickbower.com">Patrick Bower</a>
                     </small>
                 </div>
 
