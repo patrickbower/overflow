@@ -96,6 +96,23 @@ a:hover {
     padding-right: 30px;
 }
 
+.app__logo {
+    width: 130px;
+    height: 18px;
+    margin-top: 7px;
+}
+
+.app__small {
+    display: block;
+    margin-top: 5px;
+    color: var(--red-light);
+}
+
+.app__small a {
+    text-decoration: underline;
+    color: var(--red-light);
+}
+
 /* Settings */
 .app__settings {
     position: relative;
@@ -304,6 +321,20 @@ a:hover {
     top: 50%;
     margin: -35px 0 0 -35px;
     box-shadow: 0 0 20px 5px var(--red-shadow);
+}
+
+.app__timer-btn--play {
+    padding-left: 8px;
+}
+
+.app__timer-btn--pause::after,
+.app__timer-btn--pause::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 15px;
+    background: var(--red-light);
+    margin: 7px 2px 2px;
 }
 
 .app__timer-btn:hover {
