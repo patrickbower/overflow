@@ -12,8 +12,8 @@
     --grey-7:         #d9d9d9;
     --grey-8:         #f2f2f2;
     --red-0:          #e44;
-    --red-light:      #e66;
-    --red-shadow:     rgba(147,0,0,0.5);
+    --red-light:      #EB7A73;
+    --red-shadow:     rgba(142, 49, 43, 0.5);
     --white-0:        #fff;
 }
 
@@ -33,8 +33,8 @@ body {
     outline: none!important;
 }
 
-.color-red {
-    color: var(--red-0);
+a:hover {
+    cursor: pointer;
 }
 
 /*
@@ -53,32 +53,64 @@ body {
  * Icons
  */
 
- .icon-action {
-     display: block;
-     text-indent: -9999px;
-     width: 35px;
-     height: 28px;
-     background: url('icons/sprite.svg');
-     background-repeat: no-repeat;
-     background-size: 100px 100px;
- }
- .icon-action--plus {
-     background-position: -70px -37px;
- }
- .icon-action--cross {
-     background-position: -36px -37px;
- }
- .icon-action--tick {
+.icon-action {
+    display: block;
+    text-indent: -9999px;
+    width: 35px;
+    height: 28px;
+    background: url('icons/sprite.svg');
+    background-repeat: no-repeat;
+    background-size: 100px 100px;
+}
+.icon-action--plus {
+    background-position: -70px -37px;
+}
+.icon-action--cross {
+    background-position: -36px -37px;
+}
+.icon-action--cross-sml {
+    width: 20px;
+    height: 20px;
+    background-size: 60px 60px;
+    background-position: -21px -16px;
+}
+.icon-action--tick {
      background-position: 0 -37px;
- }
+}
+
+/*
+ * Root
+ */
+
+.app {
+    overflow: hidden;
+}
 
 /*
  * Nav
  */
 
 .app__navbar {
+    margin-top: 15px;
     padding-left: 30px;
     padding-right: 30px;
+}
+
+.app__logo {
+    width: 130px;
+    height: 18px;
+    margin-top: 7px;
+}
+
+.app__small {
+    display: block;
+    margin-top: 5px;
+    color: var(--red-light);
+}
+
+.app__small a {
+    text-decoration: underline;
+    color: var(--red-light);
 }
 
 /* Settings */
@@ -229,34 +261,24 @@ body {
     background: var(--red-light);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
- * add new item input
+ * Add new item
  */
+
 .app__add-new-item-icon {
     display: inline-block;
-    margin: 0 5px 0 3px;
+    margin: 20px 0 0 20px;
     color: var(--white-0);
+    font-size: 19px;
 }
 
 .app__add-new-item-input {
     display: inline-block;
     background: none;
     border: none;
-    padding-left: 6px;
+    padding-left: 15px;
+    font-size: 19px;
+    padding: 20px 30px 20px 15px;
 }
 
 .app__add-new-item-input:focus {
@@ -269,9 +291,8 @@ body {
     color: var(--white-0);
 }
 
-
 /*
- * timer
+ * Timer
  */
 
 .app__timer-wrap {
@@ -285,7 +306,6 @@ body {
     stroke: white;
     stroke-width: 30;
     stroke-opacity: 1;
-    /*stroke-linecap: round;*/
     transition: all 0.3s ease-out;
 }
 
@@ -303,12 +323,26 @@ body {
     box-shadow: 0 0 20px 5px var(--red-shadow);
 }
 
+.app__timer-btn--play {
+    padding-left: 8px;
+}
+
+.app__timer-btn--pause::after,
+.app__timer-btn--pause::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 15px;
+    background: var(--red-light);
+    margin: 7px 2px 2px;
+}
+
 .app__timer-btn:hover {
     cursor: pointer;
 }
 
 /*
- * modal
+ * Modal
  */
 
 .app__modal-content {
@@ -360,8 +394,3 @@ body {
 .app__form-btn:hover {
     background: var(--red-light);
 }
-
-/*.app__custom-select {
-    border-radius: 0;
-    border: 2px solid var(--red-0);
-}*/

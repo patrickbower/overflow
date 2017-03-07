@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as settingsActions from '../actions/settings';
+import logo from '../styles/icons/logo.svg'
 
 class Header extends Component {
 
@@ -23,7 +24,12 @@ class Header extends Component {
     render(){
         return(
             <nav className="navbar app__navbar navbar-inverse flex-row justify-content-between">
-                <h1 className="navbar-brand mb-0">OverFlow</h1>
+                <div>
+                    <img src={ logo } className="app__logo"/>
+                    <small className="app__small">
+                        made for fun by <a href="http://www.patrickbower.com">Patrick Bower</a>
+                    </small>
+                </div>
 
                 <div className="app__settings">
                     <a href="#" className="app__settings-icon"></a>

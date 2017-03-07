@@ -56,6 +56,7 @@ class Clock extends Component {
             position: 0,
             isRunning: false
         });
+        this.runningLength = 0;
         alert('Times up bucco!');
     }
 
@@ -74,8 +75,8 @@ class Clock extends Component {
     render(){
         let strokeDashoffset = this.state.position;
         let buttonType = this.state.isRunning ?
-            <button className="app__timer-btn" onClick={ this.pauseTimer.bind(this) }><b>||</b></button> :
-            <button className="app__timer-btn" onClick={ this.startTimer.bind(this) }>&#9658;</button> ;
+            <button className="app__timer-btn app__timer-btn--pause" onClick={ this.pauseTimer.bind(this) }></button> :
+            <button className="app__timer-btn app__timer-btn--play" onClick={ this.startTimer.bind(this) }>&#9658;</button> ;
 
         if (this.props.settings.clockVisible) {
             return (
