@@ -52,11 +52,11 @@ class Clock extends Component {
     }
 
     ended() {
-        alert('Times up bucco!');
         this.setState({
             position: 0,
             isRunning: false
         });
+        alert('Times up bucco!');
     }
 
     startTimer(){
