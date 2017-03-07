@@ -57,64 +57,67 @@ class Settings extends Component {
             case 'add-card':
             return (
                 <form onSubmit={ this.newCardSubmit }>
-                    <div className="form-group">
+                    <fieldset>
+                        <legend className="app__form-legend">Add new card</legend>
                         <div className="row">
                             <div className="col-md-9">
-                                <input type="text" className="form-control mb-2" placeholder="Add a new card"
+                                <input type="text" className="form-control mb-2 app__form-control" placeholder="Add a new card"
                                     ref="newCard"
                                 />
                             </div>
                             <div className="col-md-3">
-                                <button type="submit" className="btn btn-primary w-100">Add</button>
+                                <button type="submit" className="btn app__form-btn">Add</button>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
                 </form>
             )
             break;
             case 'remove-card':
             return (
                 <form onSubmit={ this.deleteCardSubmit }>
-                    <div className="form-group">
+                    <fieldset>
+                        <legend className="app__form-legend">Remove card</legend>
                         <div className="row">
                             <div className="col-md-9">
-                                <select className="custom-select w-100 mb-2"
+                                <select className="custom-select app__form-control w-100 mb-2"
                                         ref="cardDelete">
                                     <option>Remove a card</option>
                                     { this.inputOptions(this.props.cards) }
                                 </select>
                             </div>
                             <div className="col-md-3">
-                                <button type="submit" className="btn btn-danger w-100">Remove</button>
+                                <button type="submit" className="btn app__form-btn">Remove</button>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
                 </form>
             )
             break;
             case 'single-card-view':
             return (
                 <form onSubmit={ this.currentCardSubmit }>
-                    <div className="form-group">
+                    <fieldset>
+                        <legend className="app__form-legend">Card in view</legend>
                         <div className="row">
                             <div className="col-md-9">
-                                <select className="custom-select w-100 mb-2"
+                                <select className="custom-select app__form-control w-100 mb-2"
                                         ref="cardSelect">
                                     <option>Current card</option>
                                     { this.inputOptions(this.props.cards) }
                                 </select>
                             </div>
                             <div className="col-md-3">
-                                <button type="submit" className="btn btn-success w-100">Confirm</button>
+                                <button type="submit" className="btn app__form-btn">Confirm</button>
                             </div>
                         </div>
-                    </div>
+                    </fieldset>
                 </form>
             )
             break;
         default:
             return (
-                <p>There has been an error</p>
+                <p>Opps, There has been an mega error!</p>
             )
         }
     }

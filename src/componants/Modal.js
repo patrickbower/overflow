@@ -22,13 +22,10 @@ class Modal extends Component {
                 <div className="modal-backdrop show" onClick={this.closeModal.bind(this)}></div>
                     <div className="modal d-block">
                         <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="text-muted">Settings</h5>
-                                    <button type="button" className="close" onClick={this.closeModal.bind(this)}>
-                                        <span>&times;</span>
-                                    </button>
-                                </div>
+                            <div className="modal-content app__modal-content">
+                                <button type="button" className="close app__modal-close-btn" onClick={this.closeModal.bind(this)}>
+                                    <span>&times;</span>
+                                </button>
                                 <div className="modal-body">
                                     <Settings getChecklists={this.props.getChecklists.bind(this)} content={this.props.content}/>
                                 </div>
