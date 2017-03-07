@@ -50,7 +50,7 @@ class Cardlist extends Component {
 
     checkitem = (listData, index, key) => {
 
-        let crossIcon = listData.state === 'complete' ? <span className="icon-action icon-action--cross"></span> : '';
+        let crossIcon = listData.state === 'complete' ? <span className="icon-action icon-action--cross icon-action--cross-sml"></span> : '';
         let tickIcon = listData.activeItem ? <span className="icon-action icon-action--tick"></span> : '';
 
         return (
