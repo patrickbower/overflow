@@ -290,7 +290,7 @@ a:hover {
 .app__add-new-item-icon {
     display: inline-block;
     margin: 20px 0 0 20px;
-    color: var(--white-0);
+    color: var(--red-light);
     font-size: 19px;
 }
 
@@ -310,7 +310,7 @@ a:hover {
 }
 
 .app__add-new-item-input::-webkit-input-placeholder {
-    color: var(--white-0);
+    color: var(--red-light);
 }
 
 /*
