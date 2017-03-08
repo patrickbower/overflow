@@ -79,13 +79,13 @@ class Cardlist extends Component {
             return (
                 <li key={key}
                     className={`
-                            app__card p-3 mb-3
+                            app__card mb-5
                             ${typeof cardsData[key].activeItem === 'number' ? 'active' : ''}
                         `}
                     ref="card">
                     <form>
                         <fieldset>
-                            <legend className="h5 mb-4 text-center font-weight-bold">{ cardsData[key].name }</legend>
+                            <legend className="h5 mb-5 text-center font-weight-bold">{ cardsData[key].name }</legend>
                             { cardsData[key].checklist.map((listData, index) => this.checkitem(listData, index, key)) }
                         </fieldset>
                     </form>

@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as settingsActions from '../actions/settings';
-import logo from '../styles/icons/logo.svg'
+import pbLogo from '../styles/icons/pb-logo.svg'
 
 class Header extends Component {
 
@@ -24,12 +24,9 @@ class Header extends Component {
     render(){
         return(
             <nav className="navbar app__navbar navbar-inverse flex-row justify-content-between">
-                <div>
-                    <img src={ logo } className="app__logo"/>
-                    <small className="app__small">
-                        made for fun by <a href="http://www.patrickbower.com">Patrick Bower</a>
-                    </small>
-                </div>
+                <a href="http://www.patrickbower.com">
+                    <img src={ pbLogo } className="app__nav-logo"/>
+                </a>
 
                 <div className="app__settings">
                     <a href="#" className="app__settings-icon"></a>

@@ -33,8 +33,13 @@ body {
     outline: none!important;
 }
 
+a {
+    color: inherit;
+}
+
 a:hover {
     cursor: pointer;
+    color: inherit;
 }
 
 /*
@@ -96,21 +101,10 @@ a:hover {
     padding-right: 30px;
 }
 
-.app__logo {
-    width: 130px;
-    height: 18px;
-    margin-top: 7px;
-}
-
-.app__small {
-    display: block;
-    margin-top: 5px;
-    color: var(--red-light);
-}
-
-.app__small a {
-    text-decoration: underline;
-    color: var(--red-light);
+.app__nav-logo {
+    position: absolute;
+    top: -60px;
+    left: 10px;
 }
 
 /* Settings */
@@ -175,6 +169,30 @@ a:hover {
     cursor: pointer;
 }
 
+
+/*
+ * Footer
+ */
+
+.app__footer {
+    color: var(--red-light);
+}
+
+.app__logo {
+    width: 130px;
+    height: 18px;
+    margin-top: 7px;
+}
+
+.app__small {
+    display: block;
+    margin-top: 5px;
+}
+
+.app__small a {
+    text-decoration: underline;
+}
+
 /*
  * Cards
  */
@@ -192,6 +210,10 @@ a:hover {
     font-size: 19px;
     position: relative;
     z-index: 0;
+}
+
+.app__card-name {
+    padding-bottom: 30px;
 }
 
 .app__card-indicator {
@@ -307,6 +329,8 @@ a:hover {
     stroke-width: 30;
     stroke-opacity: 1;
     transition: all 0.3s ease-out;
+    transform: rotate(-90deg);
+    transform-origin: center center;
 }
 
 .app__timer-btn {

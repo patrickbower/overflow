@@ -10,6 +10,7 @@ import * as cardActions from './actions/cards';
 import './styles/reset.css';
 import './styles/bootstrap.css';
 import './styles/app.css';
+import logo from './styles/icons/logo.svg';
 
 // utils
 import config from './utils/config';
@@ -82,6 +83,16 @@ class App extends Component {
                         </div>
                     </div>
                 </div>
+                <footer className="footer app__footer">
+                    <div className="container">
+                        <div className="text-center mb-4">
+                            <img src={ logo } className="app__logo"/>
+                            <small className="app__small">
+                                made for fun by <a href="http://www.patrickbower.com">Patrick Bower</a>
+                            </small>
+                        </div>
+                    </div>
+                </footer>
             </div>
         );
     }
