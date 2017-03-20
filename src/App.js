@@ -76,7 +76,7 @@ class App extends Component {
                 <Header />
                 <Clock />
                 <Modal getChecklists={this.getChecklists.bind(this)}/>
-                <div className="container-fluid vertical-center mb-5 mt-5">
+                <div className="app__card-container container-fluid vertical-center mb-5 mt-5">
                     <div className="row">
                         <div className="col col-12">
                             <Cardlist cards={this.props.cards} />
