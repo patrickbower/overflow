@@ -3,6 +3,9 @@
   "start_url": "/index.html",
   "display": "standalone",
   "orientation": "portrait",
+  "permissions": [
+    "https://patrickbower.github.io/overflow/"
+  ],
   "icons": [
     {
       "src": "launcher-icon.png",
