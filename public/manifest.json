@@ -1,0 +1,14 @@
+{
+  "name": "OverFlow",
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "launcher-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "density": 1.0
+    }
+  ]
+}
