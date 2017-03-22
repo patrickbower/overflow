@@ -3,9 +3,6 @@
   "start_url": "/index.html",
   "display": "standalone",
   "orientation": "portrait",
-  "permissions": [
-    "https://github.com/*"
-  ],
   "icons": [
     {
       "src": "launcher-icon.png",
