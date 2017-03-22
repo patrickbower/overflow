@@ -1,7 +1,7 @@
 {
   "name": "OverFlow",
   "start_url": "/index.html",
-  "display": "standalone",
+  "display": "browser",
   "orientation": "portrait",
   "icons": [
     {
